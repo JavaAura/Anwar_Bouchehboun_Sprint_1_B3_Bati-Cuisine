@@ -840,7 +840,7 @@
 											"top": 412,
 											"width": 163.95068359375,
 											"height": 13,
-											"text": "Main-d'œuvre"
+											"text": "main.java.org.BatiCuisine.Main-d'œuvre"
 										},
 										{
 											"_type": "LabelView",
@@ -2185,7 +2185,7 @@
 											"top": 457,
 											"width": 100.4296875,
 											"height": 13,
-											"text": "Main-d'œuvre",
+											"text": "main.java.org.BatiCuisine.Main-d'œuvre",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3235,7 +3235,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGR7MRKMflKdiI="
 					},
-					"name": "Main-d'œuvre",
+					"name": "main.java.org.BatiCuisine.Main-d'œuvre",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
@@ -3574,7 +3574,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGR9NAFB/ve5Uk="
 							},
-							"name": "Main-d'œuvre"
+							"name": "main.java.org.BatiCuisine.Main-d'œuvre"
 						},
 						{
 							"_type": "UMLEnumerationLiteral",
