@@ -8,6 +8,8 @@ public abstract class Composant {
     private TypeComposant typeComposant;
     private  double tauxTva;
     private Projet projet;
+
+
      public abstract  double calculerTotal();
 
     public Composant() {
