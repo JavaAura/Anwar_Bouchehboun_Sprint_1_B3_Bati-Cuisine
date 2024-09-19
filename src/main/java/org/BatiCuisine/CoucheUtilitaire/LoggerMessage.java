@@ -8,9 +8,10 @@ import org.slf4j.LoggerFactory;
 public class LoggerMessage {
     private static final Logger logger = LoggerFactory.getLogger(LoggerMessage.class);
 
-    public static void logMessages() {
+    public  LoggerMessage(){
 
     }
+
     public static void info(String message) {
         logger.info(message);
     }
