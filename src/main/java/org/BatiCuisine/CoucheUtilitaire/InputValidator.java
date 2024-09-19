@@ -35,6 +35,7 @@ public class InputValidator {
         while (true) {
             System.out.println(prompt);
             int input = scanner.nextInt();
+            scanner.nextLine();
             switch (input) {
                 case 1:
                     return true;
