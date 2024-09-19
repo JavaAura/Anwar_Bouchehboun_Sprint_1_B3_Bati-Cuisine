@@ -14,7 +14,6 @@ import java.util.Optional;
 
 public class ClientController {
 
-    public static  Client client=new Client();
 
     public ClientController(){
 
@@ -49,6 +48,7 @@ public class ClientController {
         String adresse = InputValidator.getStringInput("Entre Adresse : ");
         String tele = InputValidator.getIntInputNombre("Entre Telephone +212|0 :");
         boolean isProfessional = InputValidator.getBooleanInput("Entre isProfessional (1-true,2-false) :");
+        Client client =new Client();
         client.setNom(nom);
         client.setAdrresse(adresse);
         client.setEstProfessionnel(isProfessional);
@@ -83,7 +83,7 @@ public class ClientController {
             boolean addProject = InputValidator.getBooleanInput("Voulez-vous ajouter un projet pour ce client? (1: Oui, 2: Non) :");
 
             if (addProject) {
-                inputProjet();
+                inputProjet(p);
             } else {
                 LoggerMessage.info("Aucun projet ajouté pour le client.");
             }
@@ -95,14 +95,14 @@ public class ClientController {
     }
     public void createProjectRecherche(){
         String nom =InputValidator.getStringInput("Entre NOM RECHERCHE :");
-
+       Client client = new Client();
        client.setNom(nom);
       Client cl=  findClient(client);
         if (cl!= null) {
             boolean addProject = InputValidator.getBooleanInput("Voulez-vous ajouter un projet pour ce client? (1: Oui, 2: Non) :");
 
             if (addProject) {
-                inputProjet();
+                inputProjet(cl);
             } else {
                 LoggerMessage.info("Aucun projet ajouté pour le client.");
             }
@@ -128,7 +128,7 @@ public class ClientController {
 
 
     //create Projet
-    public void inputProjet(){
+    public void inputProjet(Client client){
         System.out.println(CostumColor.PURPLE_BOLD_BRIGHT +" Create Projet  "      + CostumColor.RESET);
      String nomProjet=InputValidator.getStringInput("Entre Nom Projet:");
       double sourface= InputValidator.getDoubleInput("Entre Surface :");

@@ -1175,7 +1175,7 @@
 											"top": 284,
 											"width": 143.009765625,
 											"height": 13,
-											"text": "-address: String",
+											"text": "-adresse: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1438,7 +1438,7 @@
 											"top": 172,
 											"width": 156.01611328125,
 											"height": 13,
-											"text": "-dateEmission: date",
+											"text": "-dateEmission: Localdate",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1455,7 +1455,7 @@
 											"top": 187,
 											"width": 156.01611328125,
 											"height": 13,
-											"text": "-dateValidite: date",
+											"text": "-dateValidite: Localdate",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3350,7 +3350,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGR8r0ZTvqk8fY="
 							},
-							"name": "address",
+							"name": "adresse",
 							"visibility": "private",
 							"type": "String"
 						},
@@ -3444,7 +3444,7 @@
 							},
 							"name": "dateEmission",
 							"visibility": "private",
-							"type": "date"
+							"type": "Localdate"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -3454,7 +3454,7 @@
 							},
 							"name": "dateValidite",
 							"visibility": "private",
-							"type": "date"
+							"type": "Localdate"
 						},
 						{
 							"_type": "UMLAttribute",
