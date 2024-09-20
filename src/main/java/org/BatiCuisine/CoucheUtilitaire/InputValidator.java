@@ -7,6 +7,17 @@ public class InputValidator {
 
     private static Scanner scanner = new Scanner(System.in);
 
+    public static String getYesNoInput(String message) {
+        String input;
+        do {
+            input = InputValidator.getStringInput(message).trim().toLowerCase();
+            if (!input.equals("yes") && !input.equals("no")) {
+                System.out.println("Veuillez entrer 'yes' ou 'no'.");
+            }
+        } while (!input.equals("yes") && !input.equals("no"));
+        return input;
+    }
+
 
     public static int getIntInput(String prompt) {
         while (true) {
@@ -57,6 +68,17 @@ public class InputValidator {
             }
         }
     }
+    public static double getDouble(String prompt) {
+        while (true) {
+            System.out.println(prompt);
+            String input = scanner.nextLine().trim();
+            if (Pattern.matches("\\d+\\.\\d+", input)) {
+                return Double.parseDouble(input);
+            } else {
+                System.out.println("Entrée invalide. Veuillez entrer un nombre entier. 1.0");
+            }
+        }
+    }
 
     public static String getStringInput(String prompt) {
         while (true) {
@@ -70,4 +92,21 @@ public class InputValidator {
             }
         }
     }
+    public static boolean askYesNoQuestion(String question) {
+        String response;
+
+        while (true) {
+            System.out.println(question);
+            response = scanner.nextLine().trim().toLowerCase();
+
+            if (response.equals("yes")) {
+                return true;
+            } else if (response.equals("non")) {
+                return false;
+            } else {
+                System.out.println("Veuillez répondre par 'yes' ou 'non'.");
+            }
+        }
+    }
+
 }
