@@ -12,7 +12,7 @@ public class Materiaux extends Composant {
 
     }
 
-    public Materiaux(Integer id, String nom, TypeComposant typeComposant, double tauxTva,Projet projet, double coutTransport, double coefficientQualite, double quantite, double coutUnitaire) {
+    public Materiaux(Integer id, String nom, String typeComposant, double tauxTva,Projet projet, double coutTransport, double coefficientQualite, double quantite, double coutUnitaire) {
         super(id, nom, typeComposant, tauxTva,projet);
         this.coutTransport = coutTransport;
         this.coefficientQualite = coefficientQualite;

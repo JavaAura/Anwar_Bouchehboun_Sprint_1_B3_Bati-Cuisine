@@ -17,7 +17,6 @@ public class ProjetRepository implements ProjetInterface<Projet> {
       HashMap<String,Projet> projetHashMap=new HashMap<>();
     @Override
     public Projet create(Projet projet) {
-        System.out.println(projet);
         String sql="INSERT INTO projet(nom_projet,etat_projet,client_id,surface) VALUES (?,?,?,?)RETURNING id";
 
         try (PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(sql)) {

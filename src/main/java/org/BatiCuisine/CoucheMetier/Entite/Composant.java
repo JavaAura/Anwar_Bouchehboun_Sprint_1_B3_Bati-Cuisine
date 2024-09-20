@@ -5,7 +5,7 @@ import org.BatiCuisine.CoucheMetier.Enum.TypeComposant;
 public abstract class Composant {
     private  Integer id;
     private  String nom;
-    private TypeComposant typeComposant;
+    private String typeComposant;
     private  double tauxTva;
     private Projet projet;
 
@@ -15,7 +15,7 @@ public abstract class Composant {
     public Composant() {
     }
 
-    public Composant(Integer id, String nom, TypeComposant typeComposant, double tauxTva,Projet projet) {
+    public Composant(Integer id, String nom, String typeComposant, double tauxTva,Projet projet) {
         this.id = id;
         this.nom = nom;
         this.typeComposant = typeComposant;
@@ -47,11 +47,11 @@ public abstract class Composant {
         this.nom = nom;
     }
 
-    public TypeComposant getTypeComposant() {
+    public String getTypeComposant() {
         return typeComposant;
     }
 
-    public void setTypeComposant(TypeComposant typeComposant) {
+    public void setTypeComposant(String typeComposant) {
         this.typeComposant = typeComposant;
     }
 

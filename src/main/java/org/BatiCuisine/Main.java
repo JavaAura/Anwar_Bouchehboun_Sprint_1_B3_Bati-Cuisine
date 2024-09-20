@@ -12,8 +12,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ProjetController p=new ProjetController();
-        p.getProjet();
+        ClientController p=new ClientController();
+        p.menuStart();
 
 
 

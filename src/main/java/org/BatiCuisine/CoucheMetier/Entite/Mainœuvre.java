@@ -10,7 +10,7 @@ public class Mainœuvre extends  Composant {
     public Mainœuvre() {
     }
 
-    public Mainœuvre(Integer id, String nom, TypeComposant typeComposant, double tauxTva,Projet projet, double tauxHoraire, double heuresTravail, double productiviteOuvrier) {
+    public Mainœuvre(Integer id, String nom, String typeComposant, double tauxTva,Projet projet, double tauxHoraire, double heuresTravail, double productiviteOuvrier) {
         super(id, nom, typeComposant, tauxTva,projet);
         this.tauxHoraire = tauxHoraire;
         this.heuresTravail = heuresTravail;
