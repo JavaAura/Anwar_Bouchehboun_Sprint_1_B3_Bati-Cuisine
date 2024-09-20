@@ -2,17 +2,19 @@ package org.BatiCuisine.couchePersistence.repository;
 
 import org.BatiCuisine.CoucheMetier.Entite.Client;
 import org.BatiCuisine.CoucheMetier.Entite.Projet;
-import org.BatiCuisine.CoucheMetier.Enum.EtatProjet;
-import org.BatiCuisine.CoucheMetier.Interface.RepoInterface;
+import org.BatiCuisine.CoucheMetier.Interface.ProjetInterface;
 import org.BatiCuisine.coucheUtilitaire.DbConnection;
 import org.BatiCuisine.coucheUtilitaire.LoggerMessage;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-public class ProjetRepository implements RepoInterface<Projet> {
-
+public class ProjetRepository implements ProjetInterface<Projet> {
+      HashMap<String,Projet> projetHashMap=new HashMap<>();
     @Override
     public Projet create(Projet projet) {
         System.out.println(projet);
@@ -37,7 +39,31 @@ public class ProjetRepository implements RepoInterface<Projet> {
     }
 
     @Override
-    public List<Projet> getAll() {
-        return List.of();
+    public HashMap<String, Projet> getAll() {
+
+        String sql = "SELECT p.id, p.nom_projet, p.surface, p.etat_projet,c.nom FROM projet p JOIN client c ON p.client_id = c.id";
+
+        try (PreparedStatement stmt = DbConnection.getInstance().getConnection().prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Projet p = new Projet();
+                p.setId(rs.getInt("id"));  // Corrected: Fetching 'id' from 'projet'
+                p.setNomProjet(rs.getString("nom_projet"));
+                String etat = rs.getString("etat_projet");
+                p.setEtatProjet(p.getEtatProjet().valueOf(etat.toUpperCase()));
+                p.setSurface(rs.getDouble("surface"));
+                Client client = new Client();
+                client.setNom(rs.getString("nom"));
+                p.setClient(client);
+                projetHashMap.put(p.getNomProjet(),p);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        return projetHashMap;
     }
+
 }

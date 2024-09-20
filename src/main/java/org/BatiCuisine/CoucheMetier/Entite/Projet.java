@@ -79,15 +79,16 @@ public class Projet {
         this.client = client;
     }
 
+    public void Affiche(){
+
+        System.out.printf("%-10s| %-20s | %-30s | %-30s | %-15s%n", getId(), getNomProjet(),getSurface(), getEtatProjet(), getClient().getNom());    }
     @Override
     public String toString() {
-        return "Projet{" +
-                ", nomProjet='" + nomProjet + '\'' +
-                ", margeBeneficiaire=" + margeBeneficiaire +
-                ", coutTotal=" + coutTotal +
-                ", etatProjet=" + etatProjet +
-                ", client=" + client +
-                ", surface=" + surface +
-                '}';
+        return "Projet :" + '\n'+
+                "nomProjet=" + nomProjet + '\n' +
+                "etatProjet=" + etatProjet+ '\n' +
+                "client=" + client.getNom() + '\n'+
+                "surface=" + surface + '\n'
+                ;
     }
 }
