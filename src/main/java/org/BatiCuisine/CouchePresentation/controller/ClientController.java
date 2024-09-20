@@ -49,6 +49,7 @@ public class ClientController {
             }
         }while (true);
     }
+    //create Client
     public Client createClient() {
         String nom = InputValidator.getStringInput("Entre Nom Client :");
         String adresse = InputValidator.getStringInput("Entre Adresse : ");
@@ -92,8 +93,6 @@ public class ClientController {
            Projet p1=  inputProjet(p);
                 LoggerMessage.info("Projet registration successful.");
                 createCpmposant(p1);
-
-
             } else {
                 LoggerMessage.info("Aucun projet ajouté pour le client.");
             }
@@ -102,6 +101,7 @@ public class ClientController {
     }
 //create Project and client
     public  void  crateProject(){
+        System.out.println(CostumColor.PURPLE_BOLD_BRIGHT +" Ajouter Client  :  "      + CostumColor.RESET);
         Client c= createClient();
         checkOptionalClient(c);
 
@@ -109,6 +109,7 @@ public class ClientController {
     }
     //Reche client add Client
     public void createProjectRecherche(){
+        System.out.println(CostumColor.PURPLE_BOLD_BRIGHT +" Recherche Client   "      + CostumColor.RESET);
         String nom =InputValidator.getStringInput("Entre NOM RECHERCHE :");
        Client client = new Client();
        client.setNom(nom);
@@ -150,9 +151,9 @@ public class ClientController {
         clientService.createProjet(projet);
        return  projet;
     }
-
+//create Composant
     public void createCpmposant(Projet p) {
-       if( InputValidator.askYesNoQuestion("Voulez-vous ajouter un Composant yes - non ?")){
+       if( InputValidator.askYesNoQuestion("Voulez-vous ajouter un Composant (yes - non)?")){
            mainOeuvre(p);
            matriEuax(p);
        }else{
@@ -163,7 +164,7 @@ public class ClientController {
     }
 
 
-
+//Composant
     public  void mainOeuvre(Projet p){
         String continueInput;
         do {

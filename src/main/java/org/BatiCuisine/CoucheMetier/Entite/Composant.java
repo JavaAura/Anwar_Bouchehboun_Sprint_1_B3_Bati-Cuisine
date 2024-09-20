@@ -1,7 +1,5 @@
 package org.BatiCuisine.CoucheMetier.Entite;
 
-import org.BatiCuisine.CoucheMetier.Enum.TypeComposant;
-
 public abstract class Composant {
     private  Integer id;
     private  String nom;

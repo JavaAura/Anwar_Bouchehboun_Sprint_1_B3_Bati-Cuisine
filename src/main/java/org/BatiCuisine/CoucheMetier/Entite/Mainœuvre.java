@@ -1,7 +1,5 @@
 package org.BatiCuisine.CoucheMetier.Entite;
 
-import org.BatiCuisine.CoucheMetier.Enum.TypeComposant;
-
 public class Mainœuvre extends  Composant {
     private  double tauxHoraire;
     private double heuresTravail;

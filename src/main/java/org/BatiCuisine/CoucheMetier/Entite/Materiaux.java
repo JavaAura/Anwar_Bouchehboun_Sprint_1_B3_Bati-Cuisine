@@ -1,7 +1,5 @@
 package org.BatiCuisine.CoucheMetier.Entite;
 
-import org.BatiCuisine.CoucheMetier.Enum.TypeComposant;
-
 public class Materiaux extends Composant {
     private  double coutTransport;
     private double coefficientQualite;
