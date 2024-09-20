@@ -1,15 +1,15 @@
 package org.BatiCuisine.CoucheMetier.Entite;
 
 public class Mainœuvre extends  Composant {
-    private  double tauxHoraire;
+    private double tauxHoraire;
     private double heuresTravail;
-    private  double productiviteOuvrier;
+    private double productiviteOuvrier;
 
     public Mainœuvre() {
     }
 
-    public Mainœuvre(Integer id, String nom, String typeComposant, double tauxTva,Projet projet, double tauxHoraire, double heuresTravail, double productiviteOuvrier) {
-        super(id, nom, typeComposant, tauxTva,projet);
+    public Mainœuvre(Integer id, String nom, String typeComposant, double tauxTva, Projet projet, double tauxHoraire, double heuresTravail, double productiviteOuvrier) {
+        super(id, nom, typeComposant, tauxTva, projet);
         this.tauxHoraire = tauxHoraire;
         this.heuresTravail = heuresTravail;
         this.productiviteOuvrier = productiviteOuvrier;
@@ -46,4 +46,10 @@ public class Mainœuvre extends  Composant {
 
         return baseCost + productivityAdjustment;
     }
+
+    public void affiche() {
+        System.out.printf("%-10s| %-20s | %-20s | %-20s | %-20s | %-20s | %-15s%n", getId(), getNom(),getTypeComposant(), getHeuresTravail(), getProductiviteOuvrier(), getProjet().getNomProjet(), getTauxHoraire());
+    }
+
 }
+

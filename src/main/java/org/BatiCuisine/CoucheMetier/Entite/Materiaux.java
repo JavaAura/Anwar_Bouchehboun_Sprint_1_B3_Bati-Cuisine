@@ -59,4 +59,9 @@ public class Materiaux extends Composant {
 
 
     }
+
+    @Override
+    public void affiche() {
+
+    }
 }

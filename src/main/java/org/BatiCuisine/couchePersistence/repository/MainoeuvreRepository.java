@@ -1,6 +1,8 @@
 package org.BatiCuisine.couchePersistence.repository;
 
+import org.BatiCuisine.CoucheMetier.Entite.Client;
 import org.BatiCuisine.CoucheMetier.Entite.Mainœuvre;
+import org.BatiCuisine.CoucheMetier.Entite.Projet;
 import org.BatiCuisine.CoucheMetier.Interface.ComposantInterface;
 import org.BatiCuisine.coucheUtilitaire.DbConnection;
 import org.BatiCuisine.coucheUtilitaire.LoggerMessage;
@@ -12,6 +14,8 @@ import java.util.HashMap;
 
 public class MainoeuvreRepository implements ComposantInterface<Mainœuvre> {
 
+
+    HashMap<String,Mainœuvre> mainœuvreHashMap=new HashMap<>();
     public MainoeuvreRepository(){
 
     }
@@ -43,6 +47,29 @@ public class MainoeuvreRepository implements ComposantInterface<Mainœuvre> {
 
     @Override
     public HashMap<String, Mainœuvre> getAll() {
-        return null;
+        String sql="SELECT m.id, m.nom,m.type_composant,m.tauxhoraire,m.heurestravail,m.productiviteouvrier,p.nom_projet FROM mainoeuvre m,projet p where m.projet_id=p.id";
+        try (PreparedStatement stmt = DbConnection.getInstance().getConnection().prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Mainœuvre p = new Mainœuvre();
+                p.setId(rs.getInt("id"));
+                p.setNom(rs.getString("nom"));
+                p.setTypeComposant(rs.getString("type_composant"));
+                p.setTauxHoraire(rs.getDouble("tauxhoraire"));
+                p.setHeuresTravail(rs.getDouble("heurestravail"));
+                p.setProductiviteOuvrier(rs.getDouble("productiviteouvrier"));
+
+                Projet projet = new Projet();
+                projet.setNomProjet(rs.getString("nom_projet"));
+                    p.setProjet(projet);
+                mainœuvreHashMap.put(p.getNom(),p);
+            }
+
+        } catch (SQLException e) {
+            LoggerMessage.error("Error: " + e.getMessage());
+        }
+
+        return mainœuvreHashMap;
     }
 }

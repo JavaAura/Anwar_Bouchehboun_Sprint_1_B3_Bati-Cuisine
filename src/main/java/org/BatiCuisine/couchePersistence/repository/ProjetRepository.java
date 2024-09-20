@@ -59,7 +59,7 @@ public class ProjetRepository implements ProjetInterface<Projet> {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error: " + e.getMessage());
+            LoggerMessage.error("Error: " + e.getMessage());
         }
 
         return projetHashMap;

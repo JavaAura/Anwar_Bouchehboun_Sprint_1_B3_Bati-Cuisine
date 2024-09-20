@@ -12,7 +12,6 @@ public class DbConnection {
     private static final String USER = "postgres";
     private static final String PASS = "2024";
 
-    // Private constructor to prevent instantiation from outside the class
     private DbConnection() {
         try {
             connection = DriverManager.getConnection(DB_URL, USER, PASS);

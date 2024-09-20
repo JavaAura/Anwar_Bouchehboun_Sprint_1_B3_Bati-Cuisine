@@ -1,19 +1,20 @@
 package org.BatiCuisine;
 
-import org.BatiCuisine.CoucheMetier.Entite.Client;
 import org.BatiCuisine.CouchePresentation.controller.ClientController;
-import org.BatiCuisine.CouchePresentation.controller.ProjetController;
-import org.BatiCuisine.coucheUtilitaire.LoggerMessage;
+import org.BatiCuisine.CouchePresentation.controller.ComposantController;
+import org.BatiCuisine.coucheUtilitaire.InputValidator;
 
-import java.util.Optional;
 
 public class Main {
 
 
     public static void main(String[] args) {
 
-        ClientController p=new ClientController();
-        p.menuStart();
+     /*   ClientController p=new ClientController();
+        p.menuStart();*/
+
+     String s=   InputValidator.getStringInput("Entre projet Recherche :");
+        new ComposantController().getAllMainoeuvre(s);
 
 
 

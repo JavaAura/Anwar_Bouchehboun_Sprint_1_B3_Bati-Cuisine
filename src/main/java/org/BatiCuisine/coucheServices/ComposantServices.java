@@ -5,6 +5,8 @@ import org.BatiCuisine.CoucheMetier.Entite.Materiaux;
 import org.BatiCuisine.couchePersistence.repository.MainoeuvreRepository;
 import org.BatiCuisine.couchePersistence.repository.MateriauxRepository;
 
+import java.util.HashMap;
+
 public class ComposantServices {
     public ComposantServices(){
 
@@ -18,6 +20,9 @@ public class ComposantServices {
     }
     public void createMatrieaux(Materiaux materiaux){
          materiauxRepository.create(materiaux);
+    }
+    public HashMap<String,Mainœuvre> getAll(){
+      return   mainoeuvreRepository.getAll();
     }
 
 }
