@@ -19,7 +19,7 @@ public class MainoeuvreRepository implements ComposantInterface<Mainœuvre> {
 
     @Override
     public void create(Mainœuvre mainœuvre) {
-        String sql = "INSERT INTO public.mainoeuvre(nom, type_composant, projet_id, tauxhoraire, heurestravail, productiviteouvrier) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO mainoeuvre(nom, type_composant, projet_id, tauxhoraire, heurestravail, productiviteouvrier) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(sql)) {
             statement.setString(1, mainœuvre.getNom());

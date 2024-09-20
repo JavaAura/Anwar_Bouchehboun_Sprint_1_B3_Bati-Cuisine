@@ -2,12 +2,12 @@ package org.BatiCuisine.CouchePresentation.controller;
 
 import org.BatiCuisine.CoucheMetier.Entite.Client;
 import org.BatiCuisine.CoucheMetier.Entite.Mainœuvre;
+import org.BatiCuisine.CoucheMetier.Entite.Materiaux;
 import org.BatiCuisine.CoucheMetier.Entite.Projet;
 import org.BatiCuisine.CoucheMetier.Enum.EtatProjet;
-import org.BatiCuisine.CoucheMetier.Enum.TypeComposant;
 import org.BatiCuisine.CouchePresentation.CostumColor;
 import org.BatiCuisine.coucheServices.ClientService;
-import org.BatiCuisine.coucheServices.MainoeuvreServices;
+import org.BatiCuisine.coucheServices.ComposantServices;
 import org.BatiCuisine.coucheUtilitaire.InputValidator;
 import org.BatiCuisine.coucheUtilitaire.LoggerMessage;
 
@@ -23,9 +23,10 @@ public class ClientController {
 
     }
         public final ClientService clientService = new ClientService();
-        public  final MainoeuvreServices mainoeuvreServices=new MainoeuvreServices();
+        public  final ComposantServices mainoeuvreServices=new ComposantServices();
         public static Projet projet=new Projet();
          List<Mainœuvre> mainœuvres = new ArrayList<>();
+         List<Materiaux> materiauxes= new ArrayList<>();
 
     //MenuStart
     public void menuStart(){
@@ -90,7 +91,7 @@ public class ClientController {
             if (addProject) {
            Projet p1=  inputProjet(p);
                 LoggerMessage.info("Projet registration successful.");
-                createMainoeuvre(p1);
+                createCpmposant(p1);
 
 
             } else {
@@ -150,15 +151,18 @@ public class ClientController {
        return  projet;
     }
 
-    public void createMainoeuvre(Projet p) {
+    public void createCpmposant(Projet p) {
        if( InputValidator.askYesNoQuestion("Voulez-vous ajouter un Composant yes - non ?")){
            mainOeuvre(p);
+           matriEuax(p);
        }else{
           LoggerMessage.warn("Ajout refusé.");
 
        }
 
     }
+
+
 
     public  void mainOeuvre(Projet p){
         String continueInput;
@@ -187,7 +191,34 @@ public class ClientController {
 
         mainœuvres.forEach(mainœuvre -> mainoeuvreServices.createMainoeuvre(mainœuvre));
 
-        LoggerMessage.info(CostumColor.BROWN_BACKGROUND+CostumColor.WHITE_BOLD_BRIGHT+"Main-d'œuvre ajoutée avec succès ! "+ CostumColor.RESET);
+    }
+    public void matriEuax(Projet p){
+        String continueInput;
+        do {
+            Materiaux materiaux = new Materiaux();
+
+            String name = InputValidator.getStringInput("Entrez le nom du matériau: ");
+            materiaux.setNom(name);
+            materiaux.setTypeComposant("MATERIAUX");
+            materiaux.setProjet(p);
+
+            double quantité = InputValidator.getDoubleInput("Entrez la quantité de ce matériau (en litres): ");
+            materiaux.setQuantite(quantité);
+
+            double unitaire = InputValidator.getDoubleInput("Entrez le coût unitaire de ce matériau (€/litre) : ");
+            materiaux.setCoutUnitaire(unitaire);
+
+            double transport = InputValidator.getDoubleInput("Entrez le coût de transport de ce matériau (€): ");
+            materiaux.setCoutTransport(transport);
+            double qualite= InputValidator.getDouble("Entrez le coefficient de qualité du matériau (1.0 = standard, > 1.0 = haute qualité) : 1.0:");
+             materiaux.setCoefficientQualite(qualite);
+            materiauxes.add(materiaux);
+
+            continueInput = InputValidator.getYesNoInput("Voulez-vous ajouter un autre? (yes/no): ");
+
+        } while (continueInput.equalsIgnoreCase("yes"));
+
+        materiauxes.forEach(materiaux -> mainoeuvreServices.createMatrieaux(materiaux));
     }
 
 }
