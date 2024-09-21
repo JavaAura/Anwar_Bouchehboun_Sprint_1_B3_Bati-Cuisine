@@ -14,7 +14,7 @@ public class Main {
         p.menuStart();*/
 
      String s=   InputValidator.getStringInput("Entre projet Recherche :");
-        new ComposantController().getAllMainoeuvre(s);
+    /*    new ComposantController().getAllMateriaux(s);*/
 
 
 

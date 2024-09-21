@@ -63,7 +63,7 @@ public class MainoeuvreRepository implements ComposantInterface<Mainœuvre> {
                 Projet projet = new Projet();
                 projet.setNomProjet(rs.getString("nom_projet"));
                     p.setProjet(projet);
-                mainœuvreHashMap.put(p.getNom(),p);
+                mainœuvreHashMap.put(p.getProjet().getNomProjet(),p);
             }
 
         } catch (SQLException e) {

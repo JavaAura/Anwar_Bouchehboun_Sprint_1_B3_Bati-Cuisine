@@ -2,11 +2,13 @@ package org.BatiCuisine.couchePersistence.repository;
 
 import org.BatiCuisine.CoucheMetier.Entite.Mainœuvre;
 import org.BatiCuisine.CoucheMetier.Entite.Materiaux;
+import org.BatiCuisine.CoucheMetier.Entite.Projet;
 import org.BatiCuisine.CoucheMetier.Interface.ComposantInterface;
 import org.BatiCuisine.coucheUtilitaire.DbConnection;
 import org.BatiCuisine.coucheUtilitaire.LoggerMessage;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 
@@ -15,6 +17,7 @@ public class MateriauxRepository implements ComposantInterface<Materiaux> {
     public  MateriauxRepository(){
 
     }
+    HashMap<String,Materiaux> materiauxHashMap=new HashMap<>();
 
 
     @Override
@@ -42,6 +45,30 @@ public class MateriauxRepository implements ComposantInterface<Materiaux> {
 
     @Override
     public HashMap<String, Materiaux> getAll() {
-        return null;
+        String sql="SELECT  m.id,m.nom, m.type_composant,m.coutunitaire,m.quantite,m.couttransport,m.coefficientqualite,p.nom_projet FROM materiel m, projet p WHERE m.projet_id = p.id";
+        try (PreparedStatement stmt = DbConnection.getInstance().getConnection().prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Materiaux p = new Materiaux();
+                p.setId(rs.getInt("id"));
+                p.setNom(rs.getString("nom"));
+                p.setTypeComposant(rs.getString("type_composant"));
+                p.setCoutUnitaire(rs.getDouble("coutunitaire"));
+                p.setCoefficientQualite(rs.getDouble("coefficientqualite"));
+                p.setCoutTransport(rs.getDouble("couttransport"));
+                p.setQuantite(rs.getDouble("quantite"));
+
+                Projet projet = new Projet();
+                projet.setNomProjet(rs.getString("nom_projet"));
+                p.setProjet(projet);
+                materiauxHashMap.put(p.getProjet().getNomProjet(),p);
+            }
+
+        } catch (SQLException e) {
+            LoggerMessage.error("Error: " + e.getMessage());
+        }
+
+        return materiauxHashMap;
     }
 }

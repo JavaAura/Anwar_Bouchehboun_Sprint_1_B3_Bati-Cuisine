@@ -62,6 +62,7 @@ public class Materiaux extends Composant {
 
     @Override
     public void affiche() {
+        System.out.printf("%-10s| %-15s | %-20s | %-20s | %-20s | %-20s | %-15s | %-15s%n", getId(), getNom(),getTypeComposant(), getProjet().getNomProjet(),getQuantite(), getCoefficientQualite(),getCoutTransport(),getCoutUnitaire());
 
     }
 }

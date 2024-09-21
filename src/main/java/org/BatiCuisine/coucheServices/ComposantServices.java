@@ -21,8 +21,12 @@ public class ComposantServices {
     public void createMatrieaux(Materiaux materiaux){
          materiauxRepository.create(materiaux);
     }
-    public HashMap<String,Mainœuvre> getAll(){
+    public HashMap<String,Mainœuvre> getAllMainoeuvre(){
       return   mainoeuvreRepository.getAll();
+    }
+
+    public HashMap<String,Materiaux>getAllMateriaux(){
+        return materiauxRepository.getAll();
     }
 
 }
