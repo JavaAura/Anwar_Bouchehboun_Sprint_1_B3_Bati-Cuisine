@@ -6,6 +6,7 @@ import org.BatiCuisine.coucheServices.ProjetServices;
 import org.BatiCuisine.coucheUtilitaire.LoggerMessage;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class ProjetController {
     public ProjetController(){
@@ -27,6 +28,11 @@ public class ProjetController {
             projetHashMap.values().stream()
                     .forEach(Projet::Affiche);
         }
+    }
+
+  public Projet findByName(String projet){
+     return projetServices.finAll(projet);
+
     }
 
 

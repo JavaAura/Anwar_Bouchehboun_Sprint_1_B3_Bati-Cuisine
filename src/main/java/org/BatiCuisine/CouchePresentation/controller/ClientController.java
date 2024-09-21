@@ -8,6 +8,7 @@ import org.BatiCuisine.CoucheMetier.Enum.EtatProjet;
 import org.BatiCuisine.CouchePresentation.CostumColor;
 import org.BatiCuisine.coucheServices.ClientService;
 import org.BatiCuisine.coucheServices.ComposantServices;
+import org.BatiCuisine.coucheServices.ProjetServices;
 import org.BatiCuisine.coucheUtilitaire.InputValidator;
 import org.BatiCuisine.coucheUtilitaire.LoggerMessage;
 
@@ -24,6 +25,7 @@ public class ClientController {
     }
         public final ClientService clientService = new ClientService();
         public  final ComposantServices mainoeuvreServices=new ComposantServices();
+        public final ProjetServices projetServices= new ProjetServices();
         public static Projet projet=new Projet();
          List<Mainœuvre> mainœuvres = new ArrayList<>();
          List<Materiaux> materiauxes= new ArrayList<>();
@@ -87,13 +89,19 @@ public class ClientController {
         Optional<Client> clientOpt = Optional.ofNullable(client);
 
         clientOpt.ifPresentOrElse(p -> {
-            boolean addProject = InputValidator.getBooleanInput("Voulez-vous ajouter un projet pour ce client? (1: Oui, 2: Non) :");
+            boolean addProject = InputValidator.getBooleanInput("Voulez-vous ajouter un projet pour ce client? (1: YES, 2: Non) :");
 
             if (addProject) {
            Projet p1=  inputProjet(p);
-                LoggerMessage.info("Projet registration successful.");
-                createCpmposant(p1);
-                calculerCoutTotal(p1);
+                if(p1!=null){
+               LoggerMessage.info("Projet registration successful.");
+               createCpmposant(p1);
+               calculerCoutTotal(p1);
+               }else{
+                    LoggerMessage.info("Projet Aucun.");
+                     menuStart();
+                }
+
             } else {
                 LoggerMessage.info("Aucun projet ajouté pour le client.");
             }
@@ -121,11 +129,8 @@ public class ClientController {
           crateProject();
       }
 
-
-
-
-
     }
+    //Menu
     public void menuClient(){
         System.out.println(CostumColor.BROWN_BACKGROUND+CostumColor.WHITE_BOLD_BRIGHT+"----------------------------------------------------------- "+ CostumColor.RESET);
         System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"|Souhaitez-vous chercher un client existant ou en ajouter un nouveau ?  : " + CostumColor.RESET);
@@ -233,19 +238,19 @@ public class ClientController {
     //Calculer
     public void calculerCoutTotal(Projet p) {
 
-
+        System.out.println(p);
         double tauxTVA = 0;
         double margeBeneficiaire = 0;
-        boolean appliquerTVA = InputValidator.getYesNoInput("Souhaitez-vous appliquer une TVA au projet ? (y/n) : ").equalsIgnoreCase("y");
+        boolean appliquerTVA = InputValidator.getYesNoInput("Souhaitez-vous appliquer une TVA au projet ? (yes/no) : ").equalsIgnoreCase("yes");
 
         if (appliquerTVA) {
-            tauxTVA = InputValidator.getDouble("Entrez le pourcentage de TVA (%) : ") / 100.0;
+            tauxTVA = InputValidator.getDoubleInput("Entrez le pourcentage de TVA (%) : ") / 100.0;
         }
 
-        boolean appliquerMargeB = InputValidator.getYesNoInput("Souhaitez-vous appliquer une marge bénéficiaire au projet ? (y/n) : ").equalsIgnoreCase("y");
+        boolean appliquerMargeB = InputValidator.getYesNoInput("Souhaitez-vous appliquer une marge bénéficiaire au projet ? (yes/no) : ").equalsIgnoreCase("yes");
 
         if (appliquerMargeB) {
-            margeBeneficiaire = InputValidator.getDouble("Entrez le pourcentage de marge bénéficiaire (%) : ") / 100.0;
+            margeBeneficiaire = InputValidator.getDoubleInput("Entrez le pourcentage de marge bénéficiaire (%) : ") / 100.0;
         }
 
         // Calculer le coût total des composants
@@ -269,30 +274,30 @@ public class ClientController {
 
         // Afficher les résultats
         System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ Résultat du Calcul ---------------- " + CostumColor.RESET);
-        System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"Nom du projet : " + p.getNomProjet()+ CostumColor.RESET);
-        System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"Surface  : " + p.getSurface()+ CostumColor.RESET);
-        System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"Client : " + p.getClient()+ CostumColor.RESET);
-        System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"Adresse du Client : " + p.getClient().getAdrresse()+ CostumColor.RESET);
+        System.out.println(CostumColor.PURPLE_BOLD_BRIGHT+"Nom du projet ->  " + p.getNomProjet() + CostumColor.RESET);
+        System.out.println("Surface  ->  "+CostumColor.PURPLE_BOLD_BRIGHT  +  p.getSurface() + CostumColor.RESET);
+        System.out.println(CostumColor.PURPLE_BOLD_BRIGHT +  "Client :"+ CostumColor.RESET);
+        System.out.println("Nom du  Client -> "+CostumColor.PURPLE_BOLD_BRIGHT+  p.getClient().getNom()+ CostumColor.RESET);
+        System.out.println("telephone du Client -> "+CostumColor.PURPLE_BOLD_BRIGHT+  p.getClient().getTelephone()+ CostumColor.RESET);
+        System.out.println("Adresse du Client -> "+CostumColor.PURPLE_BOLD_BRIGHT+  p.getClient().getAdrresse()+ CostumColor.RESET);
 
-        p.afficherDetailsOuvriers();
         p.afficherDetailsMateriaux();
-
         System.out.printf("**Coût total des matériaux avant TVA : %.2f €**\n", coutTotalMateriaux);
         if (appliquerTVA) {
+            System.out.printf("**Coût total des matériaux avec TVA : %.2f €**\n",p.calculerTotalMateriauxAvecTVA(tauxTVA));
 
-            p.calculerTotalMateriauxAvecTVA(tauxTVA);
         }
-
+        p.afficherDetailsOuvriers();
         System.out.printf("**Coût total de la main-d'œuvre avant TVA : %.2f €**\n", coutTotalMainOeuvre);
 
         if (appliquerTVA) {
-            p.calculerTotalMainOeuvreAvecTVA(tauxTVA);
+            System.out.printf("**Coût total de la main-d'œuvre Avec TVA : %.2f €**\n",  p.calculerTotalMainOeuvreAvecTVA(tauxTVA));
+
         }
-
         System.out.printf("**Coût total avant marge : %.2f €**\n", totalAvantTVA);
-
+        double marge = 0;
         if (appliquerMargeB) {
-            double marge = coutFinal - totalAvecTVA;
+             marge = coutFinal - totalAvecTVA;
             System.out.printf("**Marge bénéficiaire (%.0f%%) : %.2f €**\n", margeBeneficiaire * 100, marge);
         }
 
@@ -301,27 +306,6 @@ public class ClientController {
 
 
 
-    //Calculer sum Composant
-  /*  public double calculerTotalMateriaux() {
-        double total = 0.0;
-        for (Materiaux materiaux : materiauxes) {
-            total += materiaux.calculerTotal();
-        }
-        return total;
-    }
-
-
-    public double calculerTotalMainOeuvre() {
-        double total = 0.0;
-        for (Mainœuvre mainOeuvre : mainœuvres) {
-            total += mainOeuvre.calculerTotal();
-        }
-        return total;
-    }
-
-    public void getMainœuvres() {
-        mainœuvres.forEach(Mainœuvre::affiche);
-    }*/
 }
 
 

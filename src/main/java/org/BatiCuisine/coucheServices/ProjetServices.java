@@ -1,6 +1,5 @@
 package org.BatiCuisine.coucheServices;
 
-import org.BatiCuisine.CoucheMetier.Entite.Client;
 import org.BatiCuisine.CoucheMetier.Entite.Projet;
 import org.BatiCuisine.couchePersistence.repository.ProjetRepository;
 
@@ -18,5 +17,11 @@ public class ProjetServices {
     public HashMap<String,Projet> Projet(){
       return projetRepository.getAll();
     }
+     public void updateProjet(Projet projet){
+        projetRepository.update(projet);
+     }
 
+     public Projet finAll(String projet){
+   return   projetRepository.findByName(projet);
+     }
 }
