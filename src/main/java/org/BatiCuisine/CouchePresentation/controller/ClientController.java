@@ -12,6 +12,7 @@ import org.BatiCuisine.coucheServices.ProjetServices;
 import org.BatiCuisine.coucheUtilitaire.InputValidator;
 import org.BatiCuisine.coucheUtilitaire.LoggerMessage;
 
+import java.nio.file.FileSystemNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -25,7 +26,8 @@ public class ClientController {
     }
         public final ClientService clientService = new ClientService();
         public  final ComposantServices mainoeuvreServices=new ComposantServices();
-        public final ProjetServices projetServices= new ProjetServices();
+        public final ProjetController projetController= new ProjetController();
+        public static  ComposantController composantController=new ComposantController();
         public static Projet projet=new Projet();
          List<Mainœuvre> mainœuvres = new ArrayList<>();
          List<Materiaux> materiauxes= new ArrayList<>();
@@ -54,6 +56,11 @@ public class ClientController {
     //create Client
     public Client createClient() {
         String nom = InputValidator.getStringInput("Entre Nom Client :");
+       if (checkClient(nom)){
+           System.out.println("Daja create  client");
+           createProjectRecherche();
+           return null;
+       }
         String adresse = InputValidator.getStringInput("Entre Adresse : ");
         String tele = InputValidator.getIntInputNombre("Entre Telephone +212|0 :");
         boolean isProfessional = InputValidator.getBooleanInput("Entre isProfessional (1-true,2-false) :");
@@ -85,6 +92,11 @@ public class ClientController {
 
     }
 
+    // check Client daja create
+    public boolean  checkClient(String  client){
+        List<Client>clients=    clientService.Client();
+    Optional<Client> opClient= clients.stream().filter(c->c.getNom().equals(client)).findFirst();
+        return opClient.isPresent();    }
 
 //check Client for add projet avec composant et calculer
     public void checkOptionalClient(Client client){
@@ -96,9 +108,9 @@ public class ClientController {
             if (addProject) {
            Projet p1=  inputProjet(p);
                 if(p1!=null){
-               LoggerMessage.info("Projet registration successful.");
-               createCpmposant(p1);
-               calculerCoutTotal(p1);
+                    LoggerMessage.info("Projet registration successful.");
+                 composantController.createCpmposant(p1);
+                 projetController.calculerCoutTotal(p1);
                }else{
                     LoggerMessage.info("Projet Aucun.");
                      menuStart();
@@ -136,6 +148,7 @@ public class ClientController {
       }
 
     }
+
     //Menu
     public void menuClient(){
         System.out.println(CostumColor.BROWN_BACKGROUND+CostumColor.WHITE_BOLD_BRIGHT+"----------------------------------------------------------- "+ CostumColor.RESET);
@@ -146,10 +159,6 @@ public class ClientController {
         System.out.println(CostumColor.BROWN_BACKGROUND+CostumColor.WHITE_BOLD_BRIGHT+"----------------------------------------------------------- "+ CostumColor.RESET);
         System.out.println("Choix => : " +CostumColor.PURPLE_BOLD_BRIGHT + " CHOIX "+ CostumColor.RESET);
     }
-
-
-
-
 
     //create Projet
     public Projet inputProjet(Client client){
@@ -163,11 +172,11 @@ public class ClientController {
         clientService.createProjet(projet);
        return  projet;
     }
-//create Composant
+/*
     public void createCpmposant(Projet p) {
        if( InputValidator.askYesNoQuestion("Voulez-vous ajouter un Composant (yes - non)?")){
-           mainOeuvre(p);
-           matriEuax(p);
+           composantController.mainOeuvre(p);
+           composantController.matriEuax(p);
        }else{
           LoggerMessage.warn("Ajout refusé.");
 
@@ -176,7 +185,7 @@ public class ClientController {
     }
 
 
-//Composant
+
     public  void mainOeuvre(Projet p){
         System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------- Ajout de la main-d'œuvre ---------------- " + CostumColor.RESET);
         String continueInput;
@@ -309,7 +318,7 @@ public class ClientController {
 
         System.out.printf("**Coût total final du projet : %.2f €**\n", coutFinal);
     }
-
+*/
 
 
 }
