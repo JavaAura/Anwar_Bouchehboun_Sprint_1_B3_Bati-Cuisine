@@ -202,7 +202,7 @@
 											"top": 130,
 											"width": 159.6279296875,
 											"height": 13,
-											"text": "+etatProjet: enum",
+											"text": "-etatProjet: enum",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3116,6 +3116,7 @@
 								"$ref": "AAAAAAGR7MReJPlPNF8="
 							},
 							"name": "etatProjet",
+							"visibility": "private",
 							"type": "enum"
 						},
 						{

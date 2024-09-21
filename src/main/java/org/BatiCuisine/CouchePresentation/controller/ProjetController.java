@@ -27,7 +27,7 @@ public class ProjetController {
             System.out.printf("%-10s| %-20s | %-30s | %-30s | %-15s%n",
                     "ID", "Projet", "Surface", "Etat Projet", "Client");
             System.out.print("-----------------------------------------------------------------------------------------------------------------\n");
-            projetHashMap.values().stream()
+            projetHashMap.values()
                     .forEach(Projet::Affiche);
         }
     }
@@ -98,9 +98,8 @@ public class ProjetController {
 
         }
         System.out.printf("**Coût total avant marge : %.2f €**\n", totalAvantTVA);
-        double marge = 0;
         if (appliquerMargeB) {
-            marge = coutFinal - totalAvecTVA;
+            double  marge = coutFinal - totalAvecTVA;
             System.out.printf("**Marge bénéficiaire (%.0f%%) : %.2f €**\n", margeBeneficiaire * 100, marge);
         }
 

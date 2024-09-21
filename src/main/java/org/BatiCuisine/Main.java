@@ -22,7 +22,8 @@ public class Main {
   /* Projet  p= new ProjetController().findByName(s);
         new ClientController().createCpmposant(p);
         new ClientController().calculerCoutTotal(p);*/
-       new ConsoleUi().menuPrancipal();
+     /*  new ConsoleUi().menuPrancipal();*/
+      new  ProjetController().getProjet();
 
     }
     }
