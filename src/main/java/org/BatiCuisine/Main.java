@@ -10,11 +10,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-     /*   ClientController p=new ClientController();
-        p.menuStart();*/
-
+       ClientController p=new ClientController();
+        p.menuStart();
+ /*
      String s=   InputValidator.getStringInput("Entre projet Recherche :");
-    /*    new ComposantController().getAllMateriaux(s);*/
+      new ComposantController().getAllMateriaux(s);*/
 
 
 

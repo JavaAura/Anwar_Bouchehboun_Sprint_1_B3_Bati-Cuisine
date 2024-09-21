@@ -41,15 +41,20 @@ public class Mainœuvre extends  Composant {
 
     @Override
     public double calculerTotal() {
-        double baseCost = tauxHoraire * heuresTravail;
-        double productivityAdjustment = baseCost * (productiviteOuvrier / 100.0);
+            return tauxHoraire * heuresTravail * productiviteOuvrier;
 
-        return baseCost + productivityAdjustment;
     }
 
     public void affiche() {
         System.out.printf("%-10s| %-20s | %-20s | %-20s | %-20s | %-20s | %-15s%n", getId(), getNom(),getTypeComposant(), getHeuresTravail(), getProductiviteOuvrier(), getProjet().getNomProjet(), getTauxHoraire());
     }
+
+    @Override
+    public void totalComposant() {
+        System.out.printf("%-10s| %-20s | %-20s | %-20s | %-20s | %-20s | %-15s%n", getId(), getNom(),getTypeComposant(), getHeuresTravail(), getProductiviteOuvrier(), getProjet().getNomProjet(), getTauxHoraire());
+
+    }
+
 
 }
 

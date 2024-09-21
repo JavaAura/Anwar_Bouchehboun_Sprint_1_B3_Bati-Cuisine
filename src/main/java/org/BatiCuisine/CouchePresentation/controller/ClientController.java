@@ -93,6 +93,7 @@ public class ClientController {
            Projet p1=  inputProjet(p);
                 LoggerMessage.info("Projet registration successful.");
                 createCpmposant(p1);
+                calculerCoutTotal(p1);
             } else {
                 LoggerMessage.info("Aucun projet ajouté pour le client.");
             }
@@ -166,10 +167,10 @@ public class ClientController {
 
 //Composant
     public  void mainOeuvre(Projet p){
+        System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------- Ajout de la main-d'œuvre ---------------- " + CostumColor.RESET);
         String continueInput;
         do {
             Mainœuvre mainœuvre = new Mainœuvre();
-
             String name = InputValidator.getStringInput("Entrez le type de main-d'œuvre (e.g., Ouvrier de base, Spécialiste): ");
             mainœuvre.setNom(name);
             mainœuvre.setTypeComposant("MAINOEUVRE");
@@ -185,6 +186,8 @@ public class ClientController {
             mainœuvre.setProductiviteOuvrier(productivite);
 
             mainœuvres.add(mainœuvre);
+            p.ajouterMainOuvrier(mainœuvre);
+            System.out.println("Mainoeuvre ajouté avec succès !\n");
 
             continueInput = InputValidator.getYesNoInput("Voulez-vous ajouter un autre? (yes/no): ");
 
@@ -195,6 +198,8 @@ public class ClientController {
     }
     public void matriEuax(Projet p){
         String continueInput;
+        System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------- Ajout de la matériau ---------------- " + CostumColor.RESET);
+
         do {
             Materiaux materiaux = new Materiaux();
 
@@ -214,6 +219,8 @@ public class ClientController {
             double qualite= InputValidator.getDouble("Entrez le coefficient de qualité du matériau (1.0 = standard, > 1.0 = haute qualité) : 1.0:");
              materiaux.setCoefficientQualite(qualite);
             materiauxes.add(materiaux);
+            p.ajouterMatriaux(materiaux);
+            System.out.println("Materiaux ajouté avec succès !\n");
 
             continueInput = InputValidator.getYesNoInput("Voulez-vous ajouter un autre? (yes/no): ");
 
@@ -222,6 +229,99 @@ public class ClientController {
         materiauxes.forEach(materiaux -> mainoeuvreServices.createMatrieaux(materiaux));
     }
 
+
+    //Calculer
+    public void calculerCoutTotal(Projet p) {
+
+
+        double tauxTVA = 0;
+        double margeBeneficiaire = 0;
+        boolean appliquerTVA = InputValidator.getYesNoInput("Souhaitez-vous appliquer une TVA au projet ? (y/n) : ").equalsIgnoreCase("y");
+
+        if (appliquerTVA) {
+            tauxTVA = InputValidator.getDouble("Entrez le pourcentage de TVA (%) : ") / 100.0;
+        }
+
+        boolean appliquerMargeB = InputValidator.getYesNoInput("Souhaitez-vous appliquer une marge bénéficiaire au projet ? (y/n) : ").equalsIgnoreCase("y");
+
+        if (appliquerMargeB) {
+            margeBeneficiaire = InputValidator.getDouble("Entrez le pourcentage de marge bénéficiaire (%) : ") / 100.0;
+        }
+
+        // Calculer le coût total des composants
+        double coutTotalMateriaux = p.calculerTotalMatriaux();
+        double coutTotalMainOeuvre = p.calculerTotalMainOeuvre();
+
+        // Calculer avant TVA
+        double totalAvantTVA = coutTotalMateriaux + coutTotalMainOeuvre;
+
+        // Calculer avec TVA
+        double totalAvecTVA = totalAvantTVA;
+        if (appliquerTVA) {
+            totalAvecTVA += totalAvantTVA * tauxTVA;
+        }
+
+        //final total
+        double coutFinal = totalAvecTVA;
+        if (appliquerMargeB) {
+            coutFinal += coutFinal * margeBeneficiaire;
+        }
+
+        // Afficher les résultats
+        System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ Résultat du Calcul ---------------- " + CostumColor.RESET);
+        System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"Nom du projet : " + p.getNomProjet()+ CostumColor.RESET);
+        System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"Surface  : " + p.getSurface()+ CostumColor.RESET);
+        System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"Client : " + p.getClient()+ CostumColor.RESET);
+        System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"Adresse du Client : " + p.getClient().getAdrresse()+ CostumColor.RESET);
+
+        p.afficherDetailsOuvriers();
+        p.afficherDetailsMateriaux();
+
+        System.out.printf("**Coût total des matériaux avant TVA : %.2f €**\n", coutTotalMateriaux);
+        if (appliquerTVA) {
+
+            p.calculerTotalMateriauxAvecTVA(tauxTVA);
+        }
+
+        System.out.printf("**Coût total de la main-d'œuvre avant TVA : %.2f €**\n", coutTotalMainOeuvre);
+
+        if (appliquerTVA) {
+            p.calculerTotalMainOeuvreAvecTVA(tauxTVA);
+        }
+
+        System.out.printf("**Coût total avant marge : %.2f €**\n", totalAvantTVA);
+
+        if (appliquerMargeB) {
+            double marge = coutFinal - totalAvecTVA;
+            System.out.printf("**Marge bénéficiaire (%.0f%%) : %.2f €**\n", margeBeneficiaire * 100, marge);
+        }
+
+        System.out.printf("**Coût total final du projet : %.2f €**\n", coutFinal);
+    }
+
+
+
+    //Calculer sum Composant
+  /*  public double calculerTotalMateriaux() {
+        double total = 0.0;
+        for (Materiaux materiaux : materiauxes) {
+            total += materiaux.calculerTotal();
+        }
+        return total;
+    }
+
+
+    public double calculerTotalMainOeuvre() {
+        double total = 0.0;
+        for (Mainœuvre mainOeuvre : mainœuvres) {
+            total += mainOeuvre.calculerTotal();
+        }
+        return total;
+    }
+
+    public void getMainœuvres() {
+        mainœuvres.forEach(Mainœuvre::affiche);
+    }*/
 }
 
 

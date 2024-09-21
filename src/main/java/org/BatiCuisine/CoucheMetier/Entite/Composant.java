@@ -10,6 +10,7 @@ public abstract class Composant {
 
      public abstract  double calculerTotal();
     public abstract void affiche();
+    public abstract void totalComposant();
     public Composant() {
     }
 

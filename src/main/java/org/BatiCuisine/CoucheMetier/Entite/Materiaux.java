@@ -52,16 +52,20 @@ public class Materiaux extends Composant {
 
     @Override
     public double calculerTotal() {
-        double baseCost = coutUnitaire * quantite;
-        double qualityAdjustment = baseCost * (coefficientQualite / 100.0);
+        double coût_de_base = coutUnitaire * quantite * coefficientQualite;
 
-        return baseCost + qualityAdjustment + coutTransport;
-
+        return coût_de_base + coutTransport;
 
     }
 
     @Override
     public void affiche() {
+        System.out.printf("%-10s| %-15s | %-20s | %-20s | %-20s | %-20s | %-15s | %-15s%n", getId(), getNom(),getTypeComposant(), getProjet().getNomProjet(),getQuantite(), getCoefficientQualite(),getCoutTransport(),getCoutUnitaire());
+
+    }
+
+    @Override
+    public void totalComposant() {
         System.out.printf("%-10s| %-15s | %-20s | %-20s | %-20s | %-20s | %-15s | %-15s%n", getId(), getNom(),getTypeComposant(), getProjet().getNomProjet(),getQuantite(), getCoefficientQualite(),getCoutTransport(),getCoutUnitaire());
 
     }
