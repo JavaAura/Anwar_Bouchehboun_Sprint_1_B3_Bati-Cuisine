@@ -45,15 +45,14 @@ public class InputValidator {
     public static boolean getBooleanInput(String prompt) {
         while (true) {
             System.out.println(prompt);
-            int input = scanner.nextInt();
-            scanner.nextLine();
+            String input = scanner.nextLine().trim().toLowerCase();
             switch (input) {
-                case 1:
+                case "yes":
                     return true;
-                case 2:
+                case "non":
                     return false;
                 default:
-                    System.out.println("Entrée invalide. Veuillez entrer '1-true' ou '2-false'.");
+                    System.out.println("Entrée invalide. Veuillez entrer 'yes' ou 'no'.");
             }
         }
     }

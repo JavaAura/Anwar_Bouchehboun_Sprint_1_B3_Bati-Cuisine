@@ -84,7 +84,9 @@ public class ClientController {
         }
 
     }
-//check Client for add projet
+
+
+//check Client for add projet avec composant et calculer
     public void checkOptionalClient(Client client){
         Optional<Client> clientOpt = Optional.ofNullable(client);
 
@@ -108,6 +110,8 @@ public class ClientController {
         }, () -> LoggerMessage.error("Aucun Client"));
 
     }
+
+
 //create Project and client
     public  void  crateProject(){
         System.out.println(CostumColor.PURPLE_BOLD_BRIGHT +" Ajouter Client  :  "      + CostumColor.RESET);
@@ -116,7 +120,9 @@ public class ClientController {
 
 
     }
-    //Reche client add Client
+
+
+    //Recherche  client et ajouter  Client
     public void createProjectRecherche(){
         System.out.println(CostumColor.PURPLE_BOLD_BRIGHT +" Recherche Client   "      + CostumColor.RESET);
         String nom =InputValidator.getStringInput("Entre NOM RECHERCHE :");

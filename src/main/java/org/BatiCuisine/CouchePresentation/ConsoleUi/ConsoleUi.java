@@ -1,12 +1,15 @@
 package org.BatiCuisine.CouchePresentation.ConsoleUi;
 
 import org.BatiCuisine.CouchePresentation.CostumColor;
+import org.BatiCuisine.CouchePresentation.controller.ClientController;
+import org.BatiCuisine.coucheUtilitaire.InputValidator;
 
 public class ConsoleUi {
 
     public ConsoleUi(){
 
     }
+
 
 
     public void menuPrancipal(){
@@ -20,7 +23,19 @@ public class ConsoleUi {
             System.out.println("|Appuyez sur 4 pour" +CostumColor.PURPLE_BOLD_BRIGHT +"| _____Quitter__________"+ CostumColor.RESET);
             System.out.println(CostumColor.BROWN_BACKGROUND+CostumColor.WHITE_BOLD_BRIGHT+"----------------------------------------------------------- "+ CostumColor.RESET);
             System.out.println("Choix => : " +CostumColor.PURPLE_BOLD_BRIGHT + " CHOIX "+ CostumColor.RESET);
-
+             int choix= InputValidator.getIntInput("Entre votre Choix :");
+             switch (choix){
+                 case 1:
+                     new ClientController().menuStart();
+                     break;
+                 case 2:break;
+                 case 3:break;
+                 case 4: System.out.println(CostumColor.PURPLE_BOLD_BRIGHT + "-----_____Quitter_______------" + CostumColor.RESET);
+                     return;
+                 default:
+                     System.out.println(CostumColor.RED_BOLD_BRIGHT + "Invalid choice");
+                     break;
+             }
         }while (true);
     }
 
