@@ -10,7 +10,6 @@ import org.BatiCuisine.coucheUtilitaire.InputValidator;
 import org.BatiCuisine.coucheUtilitaire.LoggerMessage;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class ProjetController {
     public ProjetController(){
@@ -31,6 +30,18 @@ public class ProjetController {
                     "ID", "Projet", "Surface", "Etat Projet", "Client");
             System.out.print("-----------------------------------------------------------------------------------------------------------------\n");
             projetHashMap.values()
+                    .forEach(Projet::Affiche);
+        }
+    }
+    public void getByNameProjet(String name) {
+        projetHashMap = projetServices.Projet();
+        if (projetHashMap.isEmpty()) {
+            LoggerMessage.info("Projet Vide");
+        } else {
+            System.out.printf("%-10s| %-20s | %-30s | %-30s | %-15s%n",
+                    "ID", "Projet", "Surface", "Etat Projet", "Client");
+            System.out.print("-----------------------------------------------------------------------------------------------------------------\n");
+            projetHashMap.values().stream().filter(t->t.getNomProjet().equals(name))
                     .forEach(Projet::Affiche);
         }
     }
@@ -116,11 +127,13 @@ public class ProjetController {
             System.out.printf("**Marge bénéficiaire (%.0f%%) : %.2f €**\n", margeBeneficiaire * 100, marge);
         }
         System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ Total Final :  ---------------- " + CostumColor.RESET);
+
         boolean EsProfessionnel=p.getClient().isEstProfessionnel();
 
         if(EsProfessionnel){
             double nombre= 10;
             double discountAmount = coutFinal * (nombre / 100);
+            System.out.printf("**Coût total final du projet : %.2f €**\n", coutFinal);
             total=coutFinal-discountAmount;
             System.out.printf("**Coût total final du projet discount Cliet Porfessionnel  (%.0f%%) : %.2f €**\n",nombre, coutFinal-discountAmount);
         } else {
