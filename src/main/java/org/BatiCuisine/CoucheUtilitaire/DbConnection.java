@@ -41,7 +41,7 @@ public class DbConnection {
         }
         return connection;
     }
-/// Sans Trouve
+
     public void closeConnection() {
         if (connection != null) {
             try {
