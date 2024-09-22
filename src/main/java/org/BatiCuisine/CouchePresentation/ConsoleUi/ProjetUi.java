@@ -1,6 +1,7 @@
 package org.BatiCuisine.CouchePresentation.ConsoleUi;
 
 import org.BatiCuisine.CouchePresentation.CostumColor;
+import org.BatiCuisine.CouchePresentation.controller.ComposantController;
 import org.BatiCuisine.CouchePresentation.controller.ProjetController;
 import org.BatiCuisine.coucheUtilitaire.InputValidator;
 
@@ -9,6 +10,7 @@ public class ProjetUi {
     public  ProjetUi(){
 
     }
+    public static ComposantController composantController = new ComposantController();
     public  static  ProjetController projetController=new ProjetController();
     public void menuProjet(){
         do {
@@ -29,7 +31,9 @@ public class ProjetUi {
                 case 2:
                     getByName();
                     break;
-                case 3:break;
+                case 3:
+                    composantAll();
+                    break;
                 case 4: System.out.println(CostumColor.PURPLE_BOLD_BRIGHT + "-----_____Quitter_______------" + CostumColor.RESET);
                     return;
                 default:
@@ -44,5 +48,14 @@ public class ProjetUi {
         String nom= InputValidator.getStringInput("Entre Nom De Projet :");
     projetController.getByNameProjet(nom);
 
+    }
+
+    public  void composantAll(){
+        String nom= InputValidator.getStringInput("Entre Nom De Projet :");
+        System.out.println(CostumColor.RED_BOLD_BRIGHT+"---   Composaant  ---"+ CostumColor.RESET);
+        System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ matériaux ---------------- " + CostumColor.RESET);
+        composantController.getAllMateriaux(nom);
+        System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ Main d'oeuvre ---------------- " + CostumColor.RESET);
+        composantController.getAllMainoeuvre(nom);
     }
 }

@@ -123,3 +123,8 @@
 2024-09-22 18:05:13 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
 2024-09-22 18:05:20 INFO  o.B.coucheUtilitaire.LoggerMessage - Taux tva mis à jour avec succès.
 2024-09-22 18:05:23 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
+2024-09-22 18:19:01 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-22 18:19:18 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-22 18:19:31 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-22 18:19:34 INFO  o.B.coucheUtilitaire.LoggerMessage - Taux tva mis à jour avec succès.
+2024-09-22 18:19:38 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
