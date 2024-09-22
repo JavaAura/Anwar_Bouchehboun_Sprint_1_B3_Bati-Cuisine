@@ -21,7 +21,5 @@ public class ClientService {
     public List<Client> Client(){
         return clientRepository.getAll();
     }
-    public Projet createProjet(Projet projet){
-        return   projetRepository.create(projet);
-    }
+
 }

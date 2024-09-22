@@ -82,7 +82,7 @@ public class InputValidator {
     public static String getStringInput(String prompt) {
         while (true) {
             System.out.println(prompt);
-            String input = scanner.nextLine().trim();
+            String input = scanner.nextLine().trim().toUpperCase();
             if (!input.isEmpty()) {
                 return input;
 

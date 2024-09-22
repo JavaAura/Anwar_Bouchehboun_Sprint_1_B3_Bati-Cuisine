@@ -47,6 +47,9 @@ public class ComposantController {
 
 
     public  void mainOeuvre(Projet p){
+        if (p==null){
+            return;
+        }
         System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------- Ajout de la main-d'œuvre ---------------- " + CostumColor.RESET);
         String continueInput;
         do {
@@ -77,6 +80,9 @@ public class ComposantController {
 
     }
     public void matriEuax(Projet p){
+        if (p==null){
+            return;
+        }
         String continueInput;
         System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------- Ajout de la matériau ---------------- " + CostumColor.RESET);
 
@@ -118,6 +124,11 @@ public class ComposantController {
 
         }
 
+    }
+
+
+    public void updateTva(double tva,int id){
+        composantServices.updataTva(tva,id);
     }
 
 }

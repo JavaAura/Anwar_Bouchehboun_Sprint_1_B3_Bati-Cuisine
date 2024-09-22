@@ -1,6 +1,5 @@
 package org.BatiCuisine.couchePersistence.repository;
 
-import org.BatiCuisine.CoucheMetier.Entite.Client;
 import org.BatiCuisine.CoucheMetier.Entite.Mainœuvre;
 import org.BatiCuisine.CoucheMetier.Entite.Projet;
 import org.BatiCuisine.CoucheMetier.Interface.ComposantInterface;

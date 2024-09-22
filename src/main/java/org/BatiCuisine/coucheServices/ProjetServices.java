@@ -18,10 +18,15 @@ public class ProjetServices {
       return projetRepository.getAll();
     }
      public void updateProjet(Projet projet){
+
         projetRepository.update(projet);
      }
 
      public Projet finAll(String projet){
    return   projetRepository.findByName(projet);
      }
+    public Projet createProjet(Projet projet){
+
+        return   projetRepository.create(projet);
+    }
 }

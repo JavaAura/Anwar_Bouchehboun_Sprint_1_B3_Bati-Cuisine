@@ -13,17 +13,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-   /*    ClientController p=new ClientController();
+     ClientController p=new ClientController();
         p.menuStart();
 
-    */
+
 
    /*  String s=   InputValidator.getStringInput("Entre projet Recherche :");*/
   /* Projet  p= new ProjetController().findByName(s);
         new ClientController().createCpmposant(p);
         new ClientController().calculerCoutTotal(p);*/
      /*  new ConsoleUi().menuPrancipal();*/
-      new  ProjetController().getProjet();
+    //  new  ProjetController().getProjet();
 
     }
     }

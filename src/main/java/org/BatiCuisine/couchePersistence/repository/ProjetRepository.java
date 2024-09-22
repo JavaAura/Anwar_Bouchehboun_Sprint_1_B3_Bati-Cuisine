@@ -76,7 +76,6 @@ public class ProjetRepository implements ProjetInterface<Projet> {
         try (PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(sql)) {
 
             if (projet.getMargeBeneficiaire() == 0) {
-                //for database Null   -- setNull
                 statement.setNull(1, java.sql.Types.DOUBLE);
             } else {
                 statement.setDouble(1, projet.getMargeBeneficiaire());
@@ -85,7 +84,6 @@ public class ProjetRepository implements ProjetInterface<Projet> {
             statement.setDouble(2, projet.getCoutTotal());
             statement.setInt(3, projet.getId());
 
-            // Use executeUpdate for UPDATE statements
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
                LoggerMessage.info("Projet mis à jour avec succès.");

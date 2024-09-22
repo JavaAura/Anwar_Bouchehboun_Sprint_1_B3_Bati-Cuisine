@@ -2,6 +2,7 @@ package org.BatiCuisine.coucheServices;
 
 import org.BatiCuisine.CoucheMetier.Entite.Mainœuvre;
 import org.BatiCuisine.CoucheMetier.Entite.Materiaux;
+import org.BatiCuisine.couchePersistence.repository.ComposantRepository;
 import org.BatiCuisine.couchePersistence.repository.MainoeuvreRepository;
 import org.BatiCuisine.couchePersistence.repository.MateriauxRepository;
 
@@ -14,7 +15,7 @@ public class ComposantServices {
 
     public MainoeuvreRepository mainoeuvreRepository=new MainoeuvreRepository();
     public MateriauxRepository materiauxRepository = new MateriauxRepository();
-
+   public ComposantRepository composantRepository= new ComposantRepository();
     public void createMainoeuvre(Mainœuvre mainœuvre){
         mainoeuvreRepository.create(mainœuvre);
     }
@@ -27,6 +28,9 @@ public class ComposantServices {
 
     public HashMap<String,Materiaux>getAllMateriaux(){
         return materiauxRepository.getAll();
+    }
+    public void updataTva(double tva,int id){
+        composantRepository.update(tva,id);
     }
 
 }
