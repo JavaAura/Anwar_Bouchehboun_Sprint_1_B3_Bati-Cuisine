@@ -68,7 +68,7 @@ public class ProjetController {
 
     public void calculerCoutTotal(Projet p) {
         double tauxTVA = 0;
-        double total =0;
+        double total ;
         double margeBeneficiaire = 0;
         boolean appliquerTVA = InputValidator.getYesNoInput("Souhaitez-vous appliquer une TVA au projet ? (yes/no) : ").equalsIgnoreCase("yes");
 
