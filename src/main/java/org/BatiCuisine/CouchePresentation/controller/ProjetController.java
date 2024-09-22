@@ -57,6 +57,7 @@ public class ProjetController {
 
     public void calculerCoutTotal(Projet p) {
         double tauxTVA = 0;
+        double total =0;
         double margeBeneficiaire = 0;
         boolean appliquerTVA = InputValidator.getYesNoInput("Souhaitez-vous appliquer une TVA au projet ? (yes/no) : ").equalsIgnoreCase("yes");
 
@@ -115,11 +116,20 @@ public class ProjetController {
             System.out.printf("**Marge bénéficiaire (%.0f%%) : %.2f €**\n", margeBeneficiaire * 100, marge);
         }
         System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ Total Final :  ---------------- " + CostumColor.RESET);
+        boolean EsProfessionnel=p.getClient().isEstProfessionnel();
 
-        System.out.printf("**Coût total final du projet : %.2f €**\n", coutFinal);
+        if(EsProfessionnel){
+            double nombre= 10;
+            double discountAmount = coutFinal * (nombre / 100);
+            total=coutFinal-discountAmount;
+            System.out.printf("**Coût total final du projet discount Cliet Porfessionnel  (%.0f%%) : %.2f €**\n",nombre, coutFinal-discountAmount);
+        } else {
+            total=coutFinal;
+            System.out.printf("**Coût total final du projet : %.2f €**\n", total);
+
+        }
         // update champ for table Projet
-        p.setCoutTotal(coutFinal);
-
+        p.setCoutTotal(total);
         projetServices.updateProjet(p);
 
     }
