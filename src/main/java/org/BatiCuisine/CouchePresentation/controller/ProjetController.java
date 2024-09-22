@@ -88,7 +88,7 @@ public class ProjetController {
             coutFinal += coutFinal * margeBeneficiaire;
         }
 
-        // Afficher les résultats
+        // Afficher les résultats //
         detailsProjet(p);
         System.out.println(CostumColor.RED_BOLD_BRIGHT+"--- Détail des Coûts ---"+ CostumColor.RESET);
         System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ matériaux ---------------- " + CostumColor.RESET);
