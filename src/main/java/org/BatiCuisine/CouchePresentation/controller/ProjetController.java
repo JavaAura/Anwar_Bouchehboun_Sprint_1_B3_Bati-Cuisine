@@ -127,6 +127,8 @@ public class ProjetController {
         System.out.printf("**Coût total avant marge : %.2f €**\n", totalAvantTVA);
         if (appliquerMargeB) {
             double  marge = coutFinal - totalAvecTVA;
+            System.out.printf("**Coût total Avec marge : %.2f €**\n", totalAvecTVA);
+
             System.out.printf("**Marge bénéficiaire (%.0f%%) : %.2f €**\n", margeBeneficiaire * 100, marge);
         }
         System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ Total Final :  ---------------- " + CostumColor.RESET);

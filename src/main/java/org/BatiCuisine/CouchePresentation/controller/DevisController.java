@@ -6,7 +6,6 @@ import org.BatiCuisine.CouchePresentation.CostumColor;
 import org.BatiCuisine.coucheServices.ComposantServices;
 import org.BatiCuisine.coucheServices.DevisServices;
 import org.BatiCuisine.coucheUtilitaire.DateUtlis;
-import org.BatiCuisine.coucheUtilitaire.InputValidator;
 
 import java.time.LocalDate;
 
@@ -29,8 +28,12 @@ public class DevisController {
      }
     public void devisTotal(Projet p) {
          double tva;
+        double margeBeneficiaire;
         double coutFinal= p.getCoutTotal();
          tva=composantServices.getTva(p);
+         margeBeneficiaire=p.getMargeBeneficiaire();
+        System.out.println(margeBeneficiaire);
+        double totalAvantTVA = p.calculerTotalMatriaux() + p.calculerTotalMainOeuvre();
         detailsProjet(p);
         System.out.println(CostumColor.RED_BOLD_BRIGHT+"--- Détail des Coûts ---"+ CostumColor.RESET);
         System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ matériaux ---------------- " + CostumColor.RESET);
@@ -47,7 +50,13 @@ public class DevisController {
           System.out.printf("**Coût total des matériaux avec  (%.0f%%) TVA : %.2f €**\n",tva*100,p.calculerTotalMateriauxAvecTVA(tva));
           System.out.printf("**Coût total de la  main-d'œuvre avec  (%.0f%%) TVA : %.2f €**\n",tva*100,p.calculerTotalMainOeuvreAvecTVA(tva));
       }
+        System.out.printf("**Coût total avant marge : %.2f €**\n", totalAvantTVA);
 
+        if (margeBeneficiaire > 0) {
+            System.out.printf("**Coût total avec marge : %.2f €**\n", p.calculerTotalMateriauxAvecTVA(tva)+p.calculerTotalMainOeuvreAvecTVA(tva));
+
+            System.out.printf("**Marge bénéficiaire (%.0f%%) : %.2f €**\n", margeBeneficiaire * 100, coutFinal-(p.calculerTotalMateriauxAvecTVA(tva)+p.calculerTotalMainOeuvreAvecTVA(tva)));
+        }
         System.out.printf("**Coût total final du projet : %.2f €**\n",coutFinal);
 
 
