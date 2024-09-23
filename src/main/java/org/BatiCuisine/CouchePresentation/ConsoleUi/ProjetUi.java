@@ -55,7 +55,11 @@ public class ProjetUi {
         System.out.println(CostumColor.RED_BOLD_BRIGHT+"---   Composaant  ---"+ CostumColor.RESET);
         System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ matériaux ---------------- " + CostumColor.RESET);
         composantController.getAllMateriaux(nom);
+        System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"--------------------------- " + CostumColor.RESET);
+
         System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ Main d'oeuvre ---------------- " + CostumColor.RESET);
         composantController.getAllMainoeuvre(nom);
+        System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"--------------------------- " + CostumColor.RESET);
+
     }
 }

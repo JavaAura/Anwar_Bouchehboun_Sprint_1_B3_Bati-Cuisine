@@ -1,6 +1,7 @@
 package org.BatiCuisine;
 
 import org.BatiCuisine.CouchePresentation.ConsoleUi.ConsoleUi;
+import org.BatiCuisine.coucheUtilitaire.DateUtlis;
 
 
 public class Main {
@@ -8,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-      new ConsoleUi().menuPrancipal();
+     new ConsoleUi().menuPrancipal();
 
 
    /*  String s=   InputValidator.getStringInput("Entre projet Recherche :");*/

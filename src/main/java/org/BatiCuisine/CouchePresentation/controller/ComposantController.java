@@ -17,8 +17,8 @@ public class ComposantController {
 
     HashMap<String, Mainœuvre> map=new HashMap<>();
     HashMap<String, Materiaux> materiauxHashMap= new HashMap<>();
-    List<Mainœuvre> mainœuvres = new ArrayList<>();
-    List<Materiaux> materiauxes= new ArrayList<>();
+   List<Mainœuvre> mainœuvres = new ArrayList<>();
+   List<Materiaux> materiauxes= new ArrayList<>();
     public  final ComposantServices mainoeuvreServices=new ComposantServices();
     public static ComposantServices composantServices =new ComposantServices();
     public  ComposantController(){
@@ -28,11 +28,19 @@ public class ComposantController {
 
     public void getAllMainoeuvre(String nomProject){
         map=composantServices.getAllMainoeuvre();
-            System.out.printf("%-10s| %-20s | %-20s | %-20s | %-20s | %-20s | %-15s%n",
-                    "ID", "Nom","type_composant", "tauxhoraire", " heurestravail", "productivite","nom_projet");
+
+        System.out.printf("%-10s| %-20s | %-20s | %-20s | %-20s | %-20s | %-15s%n",
+                    "ID", "Nom","type_composant", "heuresTravail ", "productivite ", "nom_projet"," tauxhoraire ");
             System.out.print("------------------------------------------------------------------------------------------------------------------------------------------\n");
             map.values().stream().filter(p->p.getProjet().getNomProjet().equals(nomProject))
                     .forEach(Mainœuvre::affiche);
+        double totalSum = map.values().stream()
+                .filter(p -> p.getProjet().getNomProjet().equals(nomProject))
+                .mapToDouble(Mainœuvre::calculerTotal)
+                .sum();
+        System.out.printf(CostumColor.RED_BOLD_BRIGHT + "--- Total Cost Main d'œuvre : %.2f%n" + CostumColor.RESET, totalSum);
+
+
 
     }
 
@@ -43,6 +51,14 @@ public class ComposantController {
         System.out.print("--------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
         materiauxHashMap.values().stream().filter(p->p.getProjet().getNomProjet().equals(nomProject))
                 .forEach(Materiaux::affiche);
+
+        double totalSum = materiauxHashMap.values().stream()
+                .filter(p -> p.getProjet().getNomProjet().equals(nomProject))
+                .mapToDouble(Materiaux::calculerTotal)
+                .sum();
+        System.out.printf(CostumColor.RED_BOLD_BRIGHT + "--- Total Cost Materiaux : %.2f%n" + CostumColor.RESET, totalSum);
+
+
     }
 
 
@@ -76,7 +92,7 @@ public class ComposantController {
 
         } while (continueInput.equalsIgnoreCase("yes"));
 
-        mainœuvres.forEach(mainœuvre -> mainoeuvreServices.createMainoeuvre(mainœuvre));
+       // mainœuvres.forEach(mainœuvre -> mainoeuvreServices.createMainoeuvre(mainœuvre));
 
     }
     public void matriEuax(Projet p){
@@ -112,7 +128,7 @@ public class ComposantController {
 
         } while (continueInput.equalsIgnoreCase("yes"));
 
-        materiauxes.forEach(materiaux -> mainoeuvreServices.createMatrieaux(materiaux));
+       // materiauxes.forEach(materiaux -> mainoeuvreServices.createMatrieaux(materiaux));
     }
 
     public void createCpmposant(Projet p) {

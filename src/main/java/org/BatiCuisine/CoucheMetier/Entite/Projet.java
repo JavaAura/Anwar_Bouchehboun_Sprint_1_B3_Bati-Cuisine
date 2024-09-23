@@ -17,6 +17,22 @@ public class Projet {
     private List<Materiaux> materiauxList = new ArrayList<>();
     private List<Mainœuvre> mainOeuvreList = new ArrayList<>();
 
+    public List<Materiaux> getMateriauxList() {
+        return materiauxList;
+    }
+
+    public void setMateriauxList(List<Materiaux> materiauxList) {
+        this.materiauxList = materiauxList;
+    }
+
+    public List<Mainœuvre> getMainOeuvreList() {
+        return mainOeuvreList;
+    }
+
+    public void setMainOeuvreList(List<Mainœuvre> mainOeuvreList) {
+        this.mainOeuvreList = mainOeuvreList;
+    }
+
     public double getSurface() {
         return surface;
     }

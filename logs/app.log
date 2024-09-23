@@ -128,3 +128,53 @@
 2024-09-22 18:19:31 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
 2024-09-22 18:19:34 INFO  o.B.coucheUtilitaire.LoggerMessage - Taux tva mis à jour avec succès.
 2024-09-22 18:19:38 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
+2024-09-23 10:30:46 ERROR o.B.coucheUtilitaire.LoggerMessage - Format de date invalide. Veuillez entrer la date au format 'yyyy-MM-dd'.
+2024-09-23 10:58:42 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-23 10:59:21 INFO  o.B.coucheUtilitaire.LoggerMessage - Aucun Composant trouvé avec cet Projet_id.
+2024-09-23 10:59:24 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
+2024-09-23 11:08:15 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-23 11:08:58 INFO  o.B.coucheUtilitaire.LoggerMessage - Aucun Composant trouvé avec cet Projet_id.
+2024-09-23 11:20:51 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-23 11:21:23 INFO  o.B.coucheUtilitaire.LoggerMessage - Aucun Composant trouvé avec cet Projet_id.
+2024-09-23 11:24:18 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-23 11:24:44 INFO  o.B.coucheUtilitaire.LoggerMessage - Aucun Composant trouvé avec cet Projet_id.
+2024-09-23 11:24:49 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-23 11:24:49 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-23 11:24:49 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
+2024-09-23 11:29:44 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-23 11:30:26 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-23 11:30:26 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-23 11:30:26 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
+2024-09-23 11:33:05 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-23 11:33:33 INFO  o.B.coucheUtilitaire.LoggerMessage - Aucun Composant trouvé avec cet Projet_id.
+2024-09-23 11:33:45 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
+2024-09-23 11:35:53 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-23 11:36:44 INFO  o.B.coucheUtilitaire.LoggerMessage - Aucun Composant trouvé avec cet Projet_id.
+2024-09-23 11:36:51 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-23 11:36:51 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-23 11:36:51 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
+2024-09-23 11:40:18 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-23 11:40:40 INFO  o.B.coucheUtilitaire.LoggerMessage - Aucun Composant trouvé avec cet Projet_id.
+2024-09-23 11:40:48 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-23 11:40:48 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-23 11:40:48 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
+2024-09-23 11:45:04 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-23 11:45:27 INFO  o.B.coucheUtilitaire.LoggerMessage - Aucun Composant trouvé avec cet Projet_id.
+2024-09-23 11:45:34 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-23 11:45:34 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-23 11:45:34 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
+2024-09-23 11:54:33 INFO  o.B.coucheUtilitaire.LoggerMessage - Client registration successful.
+2024-09-23 11:55:04 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-23 11:58:38 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-23 11:58:38 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-23 11:58:39 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-23 11:58:39 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-23 11:58:39 INFO  o.B.coucheUtilitaire.LoggerMessage - Taux tva mis à jour avec succès.
+2024-09-23 11:58:39 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
+2024-09-23 12:00:40 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-23 12:02:40 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-23 12:02:40 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-23 12:02:40 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-23 12:02:40 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-23 12:02:40 INFO  o.B.coucheUtilitaire.LoggerMessage - Taux tva mis à jour avec succès.
+2024-09-23 12:02:40 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.

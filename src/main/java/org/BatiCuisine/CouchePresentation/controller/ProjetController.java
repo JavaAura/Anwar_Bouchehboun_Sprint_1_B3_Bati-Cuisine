@@ -5,13 +5,17 @@ import org.BatiCuisine.CoucheMetier.Entite.Projet;
 
 import org.BatiCuisine.CoucheMetier.Enum.EtatProjet;
 import org.BatiCuisine.CouchePresentation.CostumColor;
+import org.BatiCuisine.coucheServices.ComposantServices;
 import org.BatiCuisine.coucheServices.ProjetServices;
 import org.BatiCuisine.coucheUtilitaire.InputValidator;
 import org.BatiCuisine.coucheUtilitaire.LoggerMessage;
 
 import java.util.HashMap;
 
+
 public class ProjetController {
+    public ComposantServices mainoeuvreServices = new ComposantServices() ;
+
     public ProjetController(){
 
     }
@@ -68,13 +72,12 @@ public class ProjetController {
 
     public void calculerCoutTotal(Projet p) {
         double tauxTVA = 0;
-        double total ;
+        double total;
         double margeBeneficiaire = 0;
         boolean appliquerTVA = InputValidator.getYesNoInput("Souhaitez-vous appliquer une TVA au projet ? (yes/no) : ").equalsIgnoreCase("yes");
 
         if (appliquerTVA) {
             tauxTVA = InputValidator.getDoubleInput("Entrez le pourcentage de TVA (%) : ") / 100.0;
-            composantController.updateTva(tauxTVA,p.getId());
         }
 
         boolean appliquerMargeB = InputValidator.getYesNoInput("Souhaitez-vous appliquer une marge bénéficiaire au projet ? (yes/no) : ").equalsIgnoreCase("yes");
@@ -141,9 +144,16 @@ public class ProjetController {
             System.out.printf("**Coût total final du projet : %.2f €**\n", total);
 
         }
-        // update champ for table Projet
-        p.setCoutTotal(total);
-        projetServices.updateProjet(p);
+
+        boolean appliquerSave = InputValidator.getYesNoInput("Souhaitez-vous enregistrer le devis  ? (yes/no) : ").equalsIgnoreCase("yes");
+if (appliquerSave) {
+    p.getMainOeuvreList().forEach(mainœuvre -> mainoeuvreServices.createMainoeuvre(mainœuvre));
+    p.getMateriauxList().forEach(materiaux -> mainoeuvreServices.createMatrieaux(materiaux));
+    composantController.updateTva(tauxTVA,p.getId());
+    p.setCoutTotal(total);
+    projetServices.updateProjet(p);
+}
+
 
     }
 
