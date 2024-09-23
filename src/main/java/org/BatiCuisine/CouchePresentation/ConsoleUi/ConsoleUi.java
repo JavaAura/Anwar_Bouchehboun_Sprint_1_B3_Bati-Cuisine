@@ -31,7 +31,9 @@ public class ConsoleUi {
                  case 2:
                      new ProjetUi().menuProjet();
                      break;
-                 case 3:break;
+                 case 3:
+
+                     break;
                  case 4: System.out.println(CostumColor.PURPLE_BOLD_BRIGHT + "-----_____Quitter_______------" + CostumColor.RESET);
                      return;
                  default:

@@ -69,4 +69,14 @@ public class Devis {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Devis :" +
+                ", montantEstime=" + projet.getCoutTotal() +
+                ", dateEmission=" + dateEmission +
+                ", dateValidite=" + dateValidite +
+                ", accepte=" + accepte +
+                ", projet=" + projet.getCoutTotal() ;
+    }
 }

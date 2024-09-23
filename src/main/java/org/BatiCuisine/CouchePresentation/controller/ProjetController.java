@@ -152,8 +152,8 @@ if (appliquerSave) {
     composantController.updateTva(tauxTVA,p.getId());
     p.setCoutTotal(total);
     projetServices.updateProjet(p);
+    new DevisController().createDevis(p);
 }
-
 
     }
 

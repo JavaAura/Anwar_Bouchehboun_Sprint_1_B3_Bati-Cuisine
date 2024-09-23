@@ -63,7 +63,7 @@ public class ClientController {
        }
         String adresse = InputValidator.getStringInput("Entre Adresse : ");
         String tele = InputValidator.getIntInputNombre("Entre Telephone +212|0 :");
-        boolean isProfessional = InputValidator.getBooleanInput("Entre isProfessional (1-true,2-false) :");
+        boolean isProfessional = InputValidator.getBooleanInput("Entre isProfessional (YES,NO) :");
         Client client =new Client();
         client.setNom(nom);
         client.setAdrresse(adresse);
@@ -103,7 +103,7 @@ public class ClientController {
         Optional<Client> clientOpt = Optional.ofNullable(client);
 
         clientOpt.ifPresentOrElse(p -> {
-            boolean addProject = InputValidator.getBooleanInput("Voulez-vous ajouter un projet pour ce client? (1: YES, 2: Non) :");
+            boolean addProject = InputValidator.getBooleanInput("Voulez-vous ajouter un projet pour ce client? (YES,Non) :");
 
             if (addProject) {
       p1=  projetController.inputProjet(p);
