@@ -3,6 +3,7 @@ package org.BatiCuisine.CouchePresentation.controller;
 import org.BatiCuisine.CoucheMetier.Entite.Devis;
 import org.BatiCuisine.CoucheMetier.Entite.Projet;
 import org.BatiCuisine.CouchePresentation.CostumColor;
+import org.BatiCuisine.coucheServices.ComposantServices;
 import org.BatiCuisine.coucheServices.DevisServices;
 import org.BatiCuisine.coucheUtilitaire.DateUtlis;
 import org.BatiCuisine.coucheUtilitaire.InputValidator;
@@ -13,7 +14,7 @@ public class DevisController {
      public  DevisController(){
 
      }
-
+      public ComposantServices composantServices= new ComposantServices();
       public DevisServices devisServices=new DevisServices();
 
      public  void  createDevis(Projet projet){
@@ -26,4 +27,46 @@ public class DevisController {
          devisServices.createDevis(devis);
 
      }
+    public void devisTotal(Projet p) {
+         double tva;
+        double coutFinal= p.getCoutTotal();
+         tva=composantServices.getTva(p);
+        detailsProjet(p);
+        System.out.println(CostumColor.RED_BOLD_BRIGHT+"--- Détail des Coûts ---"+ CostumColor.RESET);
+        System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ matériaux ---------------- " + CostumColor.RESET);
+        p.afficherDetailsMateriaux();
+        System.out.printf("**Coût total des matériaux avant TVA : %.2f €**\n", p.calculerTotalMatriaux());
+        System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ main-d'œuvre ---------------- " + CostumColor.RESET);
+        p.afficherDetailsOuvriers();
+
+        System.out.printf("**Coût total de la main-d'œuvre avant TVA : %.2f €**\n", p.calculerTotalMainOeuvre());
+
+
+        System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ Total Final :  ---------------- " + CostumColor.RESET);
+      if(tva>0){
+          System.out.printf("**Coût total des matériaux avec  (%.0f%%) TVA : %.2f €**\n",tva*100,p.calculerTotalMateriauxAvecTVA(tva));
+          System.out.printf("**Coût total de la  main-d'œuvre avec  (%.0f%%) TVA : %.2f €**\n",tva*100,p.calculerTotalMainOeuvreAvecTVA(tva));
+      }
+
+        System.out.printf("**Coût total final du projet : %.2f €**\n",coutFinal);
+
+
+     //   boolean appliquerSave = InputValidator.getYesNoInput("Souhaitez-vous enregistrer le devis  ? (yes/no) : ").equalsIgnoreCase("yes");
+
+
+    }
+
+
+
+
+    public void detailsProjet(Projet p){
+        System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ Résultat du Calcul ---------------- " + CostumColor.RESET);
+        System.out.println(CostumColor.PURPLE_BOLD_BRIGHT+"Nom du projet ->  " + p.getNomProjet() + CostumColor.RESET);
+        System.out.println("Surface  ->  "+CostumColor.PURPLE_BOLD_BRIGHT  +  p.getSurface() + CostumColor.RESET);
+        System.out.println(CostumColor.PURPLE_BOLD_BRIGHT +  "Client :"+ CostumColor.RESET);
+        System.out.println("Nom du  Client -> "+CostumColor.PURPLE_BOLD_BRIGHT+  p.getClient().getNom()+ CostumColor.RESET);
+        System.out.println("telephone du Client -> "+CostumColor.PURPLE_BOLD_BRIGHT+  p.getClient().getTelephone()+ CostumColor.RESET);
+        System.out.println("Adresse du Client -> "+CostumColor.PURPLE_BOLD_BRIGHT+  p.getClient().getAdrresse()+ CostumColor.RESET);
+    }
+
 }

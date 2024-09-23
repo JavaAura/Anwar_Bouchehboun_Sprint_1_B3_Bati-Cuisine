@@ -157,6 +157,7 @@ public class Projet {
             double coutTotal = materiau.calculerTotal();
             System.out.printf("%s : %.2f € (quantité : %.2f, coût unitaire : %.2f €/u, qualité : %.1f, transport : %.2f €)\n",
                     materiau.getNom(), coutTotal, materiau.getQuantite(), materiau.getCoutUnitaire(), materiau.getCoefficientQualite(), materiau.getCoutTransport());
+
         }
     }
 

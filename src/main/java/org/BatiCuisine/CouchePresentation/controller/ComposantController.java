@@ -32,15 +32,29 @@ public class ComposantController {
         System.out.printf("%-10s| %-20s | %-20s | %-20s | %-20s | %-20s | %-15s%n",
                     "ID", "Nom","type_composant", "heuresTravail ", "productivite ", "nom_projet"," tauxhoraire ");
             System.out.print("------------------------------------------------------------------------------------------------------------------------------------------\n");
-            map.values().stream().filter(p->p.getProjet().getNomProjet().equals(nomProject))
-                    .forEach(Mainœuvre::affiche);
-        double totalSum = map.values().stream()
-                .filter(p -> p.getProjet().getNomProjet().equals(nomProject))
-                .mapToDouble(Mainœuvre::calculerTotal)
-                .sum();
-        System.out.printf(CostumColor.RED_BOLD_BRIGHT + "--- Total Cost Main d'œuvre : %.2f%n" + CostumColor.RESET, totalSum);
+        if (!map.isEmpty()) {
+            boolean projectExists = map.values().stream()
+                    .anyMatch(p -> p.getProjet().getNomProjet().equals(nomProject));
+            if (projectExists) {
+                // If the project name exists, perform the filter and display the materials
+                map.values().stream()
+                        .filter(p -> p.getProjet().getNomProjet().equals(nomProject))
+                        .forEach(Mainœuvre::affiche);
+                double totalSum = map.values().stream()
+                        .filter(p -> p.getProjet().getNomProjet().equals(nomProject))
+                        .mapToDouble(Mainœuvre::calculerTotal)
+                        .sum();
+                System.out.printf(CostumColor.RED_BOLD_BRIGHT + "--- Total Cost Main d'œuvre : %.2f%n" + CostumColor.RESET, totalSum);
+
+            } else {
+                // If no materials for the project exist
+                System.out.println("No Main d'œuvre found for project: " + nomProject);
+            }
 
 
+        }else {
+            System.out.println("No Main d'œuvre available.");
+        }
 
     }
 
@@ -49,14 +63,25 @@ public class ComposantController {
         System.out.printf("%-10s| %-15s | %-20s | %-20s | %-20s | %-20s | %-15s | %-15s%n",
                 "ID", "Nom","type_composant", "nom_projet", " Quantite", "Coefficient Qualite","Cout Transport","Cout Unitaire");
         System.out.print("--------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-        materiauxHashMap.values().stream().filter(p->p.getProjet().getNomProjet().equals(nomProject))
-                .forEach(Materiaux::affiche);
+        boolean projectExists = materiauxHashMap.values().stream()
+                .anyMatch(p -> p.getProjet().getNomProjet().equals(nomProject));
 
-        double totalSum = materiauxHashMap.values().stream()
-                .filter(p -> p.getProjet().getNomProjet().equals(nomProject))
-                .mapToDouble(Materiaux::calculerTotal)
-                .sum();
-        System.out.printf(CostumColor.RED_BOLD_BRIGHT + "--- Total Cost Materiaux : %.2f%n" + CostumColor.RESET, totalSum);
+        if (projectExists) {
+            materiauxHashMap.values().stream()
+                    .filter(p -> p.getProjet().getNomProjet().equals(nomProject))
+                    .forEach(Materiaux::affiche);
+            double totalSum = materiauxHashMap.values().stream()
+                    .filter(p -> p.getProjet().getNomProjet().equals(nomProject))
+                    .mapToDouble(Materiaux::calculerTotal)
+                    .sum();
+            System.out.printf(CostumColor.RED_BOLD_BRIGHT + "--- Total Cost Materiaux : %.2f%n" + CostumColor.RESET, totalSum);
+
+        } else {
+            System.out.println("No materials found for project: " + nomProject);
+        }
+
+
+
 
 
     }
@@ -146,5 +171,16 @@ public class ComposantController {
     public void updateTva(double tva,int id){
         composantServices.updataTva(tva,id);
     }
+
+    public  List<Mainœuvre> listeMainOeuvre(Projet projet){
+
+   return composantServices.getAllMainoeuvreProject(projet);
+
+    }
+    public List<Materiaux> listeMateriaux(Projet projet){
+        return  composantServices.getAllMateriauxProject(projet);
+    }
+
+
 
 }

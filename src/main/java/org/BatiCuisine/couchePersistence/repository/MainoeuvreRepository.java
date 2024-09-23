@@ -9,7 +9,9 @@ import org.BatiCuisine.coucheUtilitaire.LoggerMessage;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class MainoeuvreRepository implements ComposantInterface<Mainœuvre> {
 
@@ -45,7 +47,7 @@ public class MainoeuvreRepository implements ComposantInterface<Mainœuvre> {
 
 
     @Override
-    public HashMap<String, Mainœuvre> getAll() {
+    public HashMap<String, Mainœuvre> getAllMain() {
         String sql="SELECT m.id, m.nom,m.type_composant,m.tauxhoraire,m.heurestravail,m.productiviteouvrier,p.nom_projet FROM mainoeuvre m,projet p where m.projet_id=p.id";
         try (PreparedStatement stmt = DbConnection.getInstance().getConnection().prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
@@ -71,4 +73,35 @@ public class MainoeuvreRepository implements ComposantInterface<Mainœuvre> {
 
         return mainœuvreHashMap;
     }
+
+    public List<Mainœuvre> getAllMain(Projet projet) {
+        String sql = "SELECT m.id, m.nom, m.type_composant, m.tauxhoraire, m.heurestravail, m.productiviteouvrier,m.taux_tva " +
+                "FROM mainoeuvre m, projet p " +
+                "WHERE m.projet_id = p.id AND p.nom_projet = ?";
+        List<Mainœuvre> mainoeuvreList = new ArrayList<>();
+
+        try (PreparedStatement stmt = DbConnection.getInstance().getConnection().prepareStatement(sql)) {
+            stmt.setString(1, projet.getNomProjet());
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Mainœuvre mainoeuvre = new Mainœuvre();
+                    mainoeuvre.setId(rs.getInt("id"));
+                    mainoeuvre.setNom(rs.getString("nom"));
+                    mainoeuvre.setTypeComposant(rs.getString("type_composant"));
+                    mainoeuvre.setTauxHoraire(rs.getDouble("tauxhoraire"));
+                    mainoeuvre.setHeuresTravail(rs.getDouble("heurestravail"));
+                    mainoeuvre.setProductiviteOuvrier(rs.getDouble("productiviteouvrier"));
+                    mainoeuvre.setTauxTva(rs.getDouble("taux_tva"));
+                     projet.ajouterMainOuvrier(mainoeuvre);
+                     mainoeuvreList.add(mainoeuvre);
+
+                }
+            }
+        } catch (SQLException e) {
+            LoggerMessage.error("Error: " + e.getMessage());
+        }
+    return mainoeuvreList;
+    }
+
 }

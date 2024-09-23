@@ -11,7 +11,7 @@ public class DateUtlis {
     private static Scanner scanner = new Scanner(System.in);
 
     public static LocalDate getDateInput(String prompt) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         while (true) {
             System.out.println(prompt);
             String input = scanner.nextLine().trim();

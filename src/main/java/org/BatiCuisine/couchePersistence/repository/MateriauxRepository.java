@@ -10,7 +10,9 @@ import org.BatiCuisine.coucheUtilitaire.LoggerMessage;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class MateriauxRepository implements ComposantInterface<Materiaux> {
 
@@ -44,7 +46,7 @@ public class MateriauxRepository implements ComposantInterface<Materiaux> {
     }
 
     @Override
-    public HashMap<String, Materiaux> getAll() {
+    public HashMap<String, Materiaux> getAllMain() {
         String sql="SELECT  m.id,m.nom, m.type_composant,m.coutunitaire,m.quantite,m.couttransport,m.coefficientqualite,p.nom_projet FROM materiel m, projet p WHERE m.projet_id = p.id";
         try (PreparedStatement stmt = DbConnection.getInstance().getConnection().prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
@@ -70,5 +72,37 @@ public class MateriauxRepository implements ComposantInterface<Materiaux> {
         }
 
         return materiauxHashMap;
+    }
+
+    @Override
+    public List<Materiaux> getAllMain(Projet projet) {
+        String sql = "SELECT m.id, m.nom, m.type_composant, m.quantite, m.couttransport, m.coefficientqualite,m.coutunitaire,m.taux_tva " +
+                "FROM materiel m, projet p " +
+                "WHERE m.projet_id = p.id AND p.nom_projet = ?";
+        List<Materiaux> materiauxes = new ArrayList<>();
+
+        try (PreparedStatement stmt = DbConnection.getInstance().getConnection().prepareStatement(sql)) {
+            stmt.setString(1, projet.getNomProjet());
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Materiaux materiaux = new Materiaux();
+                    materiaux.setId(rs.getInt("id"));
+                    materiaux.setNom(rs.getString("nom"));
+                    materiaux.setTypeComposant(rs.getString("type_composant"));
+                    materiaux.setQuantite(rs.getDouble("quantite"));
+                    materiaux.setCoutTransport(rs.getDouble("couttransport"));
+                    materiaux.setCoefficientQualite(rs.getDouble("coefficientqualite"));
+                    materiaux.setCoutUnitaire(rs.getDouble("coutunitaire"));
+                    materiaux.setTauxTva(rs.getDouble("taux_tva"));
+                    projet.ajouterMatriaux(materiaux);
+                    materiauxes.add(materiaux);
+
+                }
+            }
+        } catch (SQLException e) {
+            LoggerMessage.error("Error: " + e.getMessage());
+        }
+        return materiauxes;
     }
 }

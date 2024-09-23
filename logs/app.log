@@ -231,3 +231,43 @@
 2024-09-23 15:15:44 INFO  o.B.coucheUtilitaire.LoggerMessage - Taux tva mis à jour avec succès.
 2024-09-23 15:15:44 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
 2024-09-23 15:15:55 ERROR o.B.coucheUtilitaire.LoggerMessage - Erreur lors de la création du devis : Un résultat a été retourné alors qu'aucun n'était attendu.
+2024-09-23 17:09:43 ERROR o.B.coucheUtilitaire.LoggerMessage - Error: ERREUR: la colonne m.nom_projet n'existe pas
+  Indice : Peut-être que vous souhaitiez référencer la colonne « p.nom_projet ».
+  Position : 150
+2024-09-23 17:11:00 ERROR o.B.coucheUtilitaire.LoggerMessage - Error: ERREUR: la colonne m.nom_projet n'existe pas
+  Indice : Peut-être que vous souhaitiez référencer la colonne « p.nom_projet ».
+  Position : 150
+2024-09-23 17:24:17 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-23 17:25:22 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-23 17:25:22 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-23 17:25:22 INFO  o.B.coucheUtilitaire.LoggerMessage - Taux tva mis à jour avec succès.
+2024-09-23 17:25:22 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
+2024-09-23 17:25:32 ERROR o.B.coucheUtilitaire.LoggerMessage - Erreur lors de la création du devis : Un résultat a été retourné alors qu'aucun n'était attendu.
+2024-09-23 19:39:53 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-23 19:41:42 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-23 19:52:11 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-23 19:53:36 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-23 19:53:36 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-23 19:53:36 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-23 19:53:36 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-23 19:53:36 INFO  o.B.coucheUtilitaire.LoggerMessage - Taux tva mis à jour avec succès.
+2024-09-23 19:53:36 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
+2024-09-23 19:53:50 ERROR o.B.coucheUtilitaire.LoggerMessage - Erreur lors de la création du devis : Un résultat a été retourné alors qu'aucun n'était attendu.
+2024-09-23 20:45:20 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-23 20:46:57 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-23 20:46:57 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-23 20:46:57 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-23 20:46:57 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-23 20:46:57 INFO  o.B.coucheUtilitaire.LoggerMessage - Taux tva mis à jour avec succès.
+2024-09-23 20:46:57 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
+2024-09-23 20:47:08 ERROR o.B.coucheUtilitaire.LoggerMessage - Erreur lors de la création du devis : Un résultat a été retourné alors qu'aucun n'était attendu.
+2024-09-23 20:48:07 ERROR o.B.coucheUtilitaire.LoggerMessage - Error: Le nom de colonne quantite n'a pas été trouvé dans ce ResultSet.
+2024-09-23 20:50:40 ERROR o.B.coucheUtilitaire.LoggerMessage - Error: Le nom de colonne quantite n'a pas été trouvé dans ce ResultSet.
+2024-09-23 20:52:59 ERROR o.B.coucheUtilitaire.LoggerMessage - Error: ERREUR: la colonne m.quantite n'existe pas
+  Position : 39
+2024-09-23 21:09:39 ERROR o.B.coucheUtilitaire.LoggerMessage - Error: ERREUR: la colonne m.nom_projet n'existe pas
+  Position : 42
+2024-09-23 21:11:49 ERROR o.B.coucheUtilitaire.LoggerMessage - Error: ERREUR: la colonne m.nom_projet n'existe pas
+  Position : 42
+2024-09-23 21:14:52 ERROR o.B.coucheUtilitaire.LoggerMessage - Error: L'indice de la colonne est hors limite : 1, nombre de colonnes : 0.
+2024-09-23 22:44:43 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.

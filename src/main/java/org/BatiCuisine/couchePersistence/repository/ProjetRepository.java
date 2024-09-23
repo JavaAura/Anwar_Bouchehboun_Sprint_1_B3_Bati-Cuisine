@@ -10,10 +10,7 @@ import org.BatiCuisine.coucheUtilitaire.LoggerMessage;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-
 public class ProjetRepository implements ProjetInterface<Projet> {
       HashMap<String,Projet> projetHashMap=new HashMap<>();
     @Override
@@ -66,10 +63,6 @@ public class ProjetRepository implements ProjetInterface<Projet> {
         return projetHashMap;
     }
 
-
-
-
-
     @Override
     public void update(Projet projet) {
         String sql = "UPDATE projet SET marge_beneficiaire=?, cout_total=? WHERE id=?";
@@ -98,7 +91,7 @@ public class ProjetRepository implements ProjetInterface<Projet> {
 
     @Override
     public Projet findByName(String projet) {
-        String sql = "SELECT p.id, p.nom_projet, p.surface, p.etat_projet, c.nom,c.adrresse,c.telephone FROM projet p JOIN client c ON p.client_id = c.id WHERE p.nom_projet LIKE ?";
+        String sql = "SELECT p.id, p.nom_projet, p.surface, p.etat_projet,p.cout_total,p.marge_beneficiaire, c.nom,c.adrresse,c.telephone FROM projet p JOIN client c ON p.client_id = c.id WHERE p.nom_projet LIKE ?";
         Projet p = null;
 
         try (PreparedStatement stmt = DbConnection.getInstance().getConnection().prepareStatement(sql)) {
@@ -109,10 +102,10 @@ public class ProjetRepository implements ProjetInterface<Projet> {
                     p = new Projet();
                     p.setId(rs.getInt("id"));
                     p.setNomProjet(rs.getString("nom_projet"));
-
+                    p.setCoutTotal(rs.getDouble("cout_total"));
                     String etat = rs.getString("etat_projet");
                     p.setEtatProjet(EtatProjet.valueOf(etat.toUpperCase()));
-
+                    p.setMargeBeneficiaire(rs.getDouble("marge_beneficiaire"));
                     p.setSurface(rs.getDouble("surface"));
                     Client client = new Client();
                     client.setNom(rs.getString("nom"));

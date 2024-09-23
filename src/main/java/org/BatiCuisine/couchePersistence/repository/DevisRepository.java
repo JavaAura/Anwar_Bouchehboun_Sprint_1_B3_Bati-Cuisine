@@ -1,7 +1,6 @@
 package org.BatiCuisine.couchePersistence.repository;
 
 import org.BatiCuisine.CoucheMetier.Entite.Devis;
-import org.BatiCuisine.CoucheMetier.Entite.Projet;
 import org.BatiCuisine.CoucheMetier.Interface.RepoInterface;
 import org.BatiCuisine.coucheUtilitaire.DbConnection;
 import org.BatiCuisine.coucheUtilitaire.LoggerMessage;
