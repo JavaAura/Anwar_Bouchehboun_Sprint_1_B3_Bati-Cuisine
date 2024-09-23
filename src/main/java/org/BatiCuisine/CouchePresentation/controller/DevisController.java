@@ -32,7 +32,6 @@ public class DevisController {
         double coutFinal= p.getCoutTotal();
          tva=composantServices.getTva(p);
          margeBeneficiaire=p.getMargeBeneficiaire();
-        System.out.println(margeBeneficiaire);
         double totalAvantTVA = p.calculerTotalMatriaux() + p.calculerTotalMainOeuvre();
         detailsProjet(p);
         System.out.println(CostumColor.RED_BOLD_BRIGHT+"--- Détail des Coûts ---"+ CostumColor.RESET);
