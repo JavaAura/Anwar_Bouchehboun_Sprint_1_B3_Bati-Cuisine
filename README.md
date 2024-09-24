@@ -92,7 +92,7 @@ git `clone https://github.com/anwar-bouchehboun/S1_Brief-3.git`
 
 
 ### Conception UML(Diagramme ) :
-<img width="486" alt="class" src="https://github.com/user-attachments/assets/8b523568-8a5c-499c-97ec-caa2472a2109">
+<img width="508" alt="digramme_classs" src="https://github.com/user-attachments/assets/a2ff521d-2eaf-4a69-858a-ee41a7999e13">
 
 
 ### Contact
