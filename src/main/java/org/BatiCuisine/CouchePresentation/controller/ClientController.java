@@ -1,19 +1,13 @@
 package org.BatiCuisine.CouchePresentation.controller;
 
 import org.BatiCuisine.CoucheMetier.Entite.Client;
-import org.BatiCuisine.CoucheMetier.Entite.Mainœuvre;
-import org.BatiCuisine.CoucheMetier.Entite.Materiaux;
 import org.BatiCuisine.CoucheMetier.Entite.Projet;
-import org.BatiCuisine.CoucheMetier.Enum.EtatProjet;
 import org.BatiCuisine.CouchePresentation.CostumColor;
 import org.BatiCuisine.coucheServices.ClientService;
 import org.BatiCuisine.coucheServices.ComposantServices;
-import org.BatiCuisine.coucheServices.ProjetServices;
 import org.BatiCuisine.coucheUtilitaire.InputValidator;
 import org.BatiCuisine.coucheUtilitaire.LoggerMessage;
 
-import java.nio.file.FileSystemNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,8 +23,7 @@ public class ClientController {
         public final ProjetController projetController= new ProjetController();
         public static  ComposantController composantController=new ComposantController();
         public static Projet p1=new Projet();
-         List<Mainœuvre> mainœuvres = new ArrayList<>();
-         List<Materiaux> materiauxes= new ArrayList<>();
+
 
     //MenuStart
     public void menuStart(){

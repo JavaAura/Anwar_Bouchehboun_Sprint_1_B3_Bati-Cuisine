@@ -1754,13 +1754,47 @@
 											"height": 13,
 											"text": "+calculerTotal()",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGSJIt/7JGk12Q=",
+											"_parent": {
+												"$ref": "AAAAAAGR9MswVvtC6z0="
+											},
+											"model": {
+												"$ref": "AAAAAAGSJIt/4pGhTsc="
+											},
+											"font": "Arial;13;0",
+											"left": 305,
+											"top": 454,
+											"width": 140.8388671875,
+											"height": 13,
+											"text": "+affiche()",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGSJIu0O5IXx7s=",
+											"_parent": {
+												"$ref": "AAAAAAGR9MswVvtC6z0="
+											},
+											"model": {
+												"$ref": "AAAAAAGSJIu0NpIUZ/g="
+											},
+											"font": "Arial;13;0",
+											"left": 305,
+											"top": 469,
+											"width": 140.8388671875,
+											"height": 13,
+											"text": "+totalComposant()",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 300,
 									"top": 434,
 									"width": 150.8388671875,
-									"height": 23
+									"height": 53
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -1800,7 +1834,7 @@
 							"left": 300,
 							"top": 341,
 							"width": 149.8388671875,
-							"height": 116,
+							"height": 146,
 							"nameCompartment": {
 								"$ref": "AAAAAAGR9MswVvs8E9M="
 							},
@@ -1838,8 +1872,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 521,
-									"top": 411,
+									"left": 522,
+									"top": 419,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -1859,8 +1893,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 521,
-									"top": 426,
+									"left": 522,
+									"top": 434,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -1880,8 +1914,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 522,
-									"top": 382,
+									"left": 521,
+									"top": 390,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -1899,7 +1933,7 @@
 								"$ref": "AAAAAAGR8rohAvo8I68="
 							},
 							"lineStyle": 1,
-							"points": "594:405;451:401",
+							"points": "594:410;451:412",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGR9M2dN/u+4QQ="
@@ -1933,7 +1967,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 244,
-									"top": 379,
+									"top": 386,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -1953,8 +1987,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 244,
-									"top": 364,
+									"left": 245,
+									"top": 371,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -1974,8 +2008,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 244,
-									"top": 409,
+									"left": 243,
+									"top": 415,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -1993,7 +2027,7 @@
 								"$ref": "AAAAAAGR7MmEtfne5zk="
 							},
 							"lineStyle": 1,
-							"points": "189:400;299:400",
+							"points": "189:405;299:410",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGR9M2kEfvPsrA="
@@ -3336,6 +3370,22 @@
 								"$ref": "AAAAAAGR9MswVfs5nvI="
 							},
 							"name": "calculerTotal"
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAGSJIt/4pGhTsc=",
+							"_parent": {
+								"$ref": "AAAAAAGR9MswVfs5nvI="
+							},
+							"name": "affiche"
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAGSJIu0NpIUZ/g=",
+							"_parent": {
+								"$ref": "AAAAAAGR9MswVfs5nvI="
+							},
+							"name": "totalComposant"
 						}
 					]
 				},

@@ -23,7 +23,6 @@ public class ComposantController {
     HashMap<String, Materiaux> materiauxHashMap= new HashMap<>();
     List<Mainœuvre> mainœuvres = new ArrayList<>();
     List<Materiaux> materiauxes= new ArrayList<>();
-    public  final ComposantServices mainoeuvreServices=new ComposantServices();
     public static ComposantServices composantServices =new ComposantServices();
 
     // search mainOeuvre

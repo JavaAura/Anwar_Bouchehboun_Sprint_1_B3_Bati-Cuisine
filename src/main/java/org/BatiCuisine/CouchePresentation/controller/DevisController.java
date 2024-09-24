@@ -88,7 +88,7 @@ public class DevisController {
             System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ Refuser Devis ---------------- " + CostumColor.RESET);
 
         }}else {
-           System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"Devis deja accpete " +CostumColor.RESET);
+           System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"Devis deja Save " +CostumColor.RESET);
        }
        projetServices.updateEtat(p);
 

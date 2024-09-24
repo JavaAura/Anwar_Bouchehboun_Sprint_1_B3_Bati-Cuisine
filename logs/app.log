@@ -303,3 +303,5 @@
 2024-09-24 14:15:36 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
 2024-09-24 14:15:44 ERROR o.B.coucheUtilitaire.LoggerMessage - Erreur lors de la création du devis : Un résultat a été retourné alors qu'aucun n'était attendu.
 2024-09-24 14:16:05 INFO  o.B.coucheUtilitaire.LoggerMessage - État du projet mis à jour avec succès.
+2024-09-24 15:45:12 INFO  o.B.coucheUtilitaire.LoggerMessage - État du projet mis à jour avec succès.
+2024-09-24 16:05:37 INFO  o.B.coucheUtilitaire.LoggerMessage - État du projet mis à jour avec succès.
