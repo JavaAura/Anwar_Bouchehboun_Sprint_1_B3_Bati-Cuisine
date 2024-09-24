@@ -64,7 +64,7 @@ public class MateriauxRepository implements ComposantInterface<Materiaux> {
                 Projet projet = new Projet();
                 projet.setNomProjet(rs.getString("nom_projet"));
                 p.setProjet(projet);
-                materiauxHashMap.put(p.getNom(),p);
+                materiauxHashMap.put(String.valueOf(p.getId()), p);
             }
 
         } catch (SQLException e) {

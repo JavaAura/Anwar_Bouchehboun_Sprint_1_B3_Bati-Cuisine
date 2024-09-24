@@ -11,6 +11,7 @@ import org.BatiCuisine.coucheUtilitaire.LoggerMessage;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 public class ComposantController {
 
@@ -26,53 +27,52 @@ public class ComposantController {
     public static ComposantServices composantServices =new ComposantServices();
 
     // search mainOeuvre
-    public void getAllMainoeuvre(String nomProject){
+    public void getAllMainoeuvre(String nomProject) {
+        map = composantServices.getAllMainoeuvre();
 
-        map=composantServices.getAllMainoeuvre();
         if (!map.isEmpty()) {
-            boolean projectExists = map.values().stream()
-                    .anyMatch(p -> p.getProjet().getNomProjet().equals(nomProject));
-            if (projectExists) {
-                System.out.printf("%-10s| %-20s | %-20s | %-20s | %-20s | %-20s | %-15s%n",
-                        "ID", "Nom", "type_composant", "heuresTravail ", "productivite ", "nom_projet", " tauxhoraire ");
-                System.out.print("------------------------------------------------------------------------------------------------------------------------------------------\n");
-                map.values().stream()
-                        .filter(p -> p.getProjet().getNomProjet().equals(nomProject))
-                        .forEach(Mainœuvre::affiche);
-                double totalSum = map.values().stream()
-                        .filter(p -> p.getProjet().getNomProjet().equals(nomProject))
-                        .mapToDouble(Mainœuvre::calculerTotal)
-                        .sum();
-                System.out.printf(CostumColor.RED_BOLD_BRIGHT + "--- Total Cost Main d'œuvre : %.2f%n" + CostumColor.RESET, totalSum);
-            }else{
-                System.out.println("nom de Projet et vide");
-            }
+            System.out.printf("%-10s| %-20s | %-20s | %-20s | %-20s | %-20s | %-15s%n",
+                    "ID", "Nom", "Type Composant", "Heures Travail", "Productivite", "Nom Projet", "Taux Horaire");
+            System.out.print("------------------------------------------------------------------------------------------------------------------------------------------\n");
+
+            map.values().stream()
+                    .filter(p -> Optional.ofNullable(p.getProjet())
+                            .map(Projet::getNomProjet)
+                            .orElse("").equals(nomProject))
+                    .forEach(Mainœuvre::affiche);
+
+            double totalSum = map.values().stream()
+                    .filter(p -> Optional.ofNullable(p.getProjet())
+                            .map(Projet::getNomProjet)
+                            .orElse("").equals(nomProject))
+                    .mapToDouble(Mainœuvre::calculerTotal)
+                    .sum();
+
+            System.out.printf(CostumColor.RED_BOLD_BRIGHT + "--- Total Cost Main d'œuvre : %.2f%n" + CostumColor.RESET, totalSum);
+        } else {
+            System.out.println("No data available for the specified project.");
         }
-}
-  // search Materiaux
+    }
+
+    // search Materiaux
     public void getAllMateriaux(String nomProject){
         materiauxHashMap=composantServices.getAllMateriaux();
-        if (!materiauxHashMap.isEmpty()) {
-            boolean projectExists = materiauxHashMap.values().stream()
-                    .anyMatch(p -> p.getProjet().getNomProjet().equals(nomProject));
-            if (projectExists) {
 
-                System.out.printf("%-10s| %-15s | %-20s | %-20s | %-20s | %-20s | %-15s | %-15s%n",
-                        "ID", "Nom", "type_composant", "nom_projet", " Quantite", "Coefficient Qualite", "Cout Transport", "Cout Unitaire");
-                System.out.print("--------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-                materiauxHashMap.values().stream()
-                        .filter(p -> p.getProjet().getNomProjet().equals(nomProject))
-                        .forEach(Materiaux::affiche);
-                double totalSum = materiauxHashMap.values().stream()
-                        .filter(p -> p.getProjet().getNomProjet().equals(nomProject))
-                        .mapToDouble(Materiaux::calculerTotal)
-                        .sum();
-                System.out.printf(CostumColor.RED_BOLD_BRIGHT + "--- Total Cost Materiaux : %.2f%n" + CostumColor.RESET, totalSum);
-            }else {
-                System.out.println("nom de Projet et vide");
-
-            }
-        }
+        System.out.printf("%-10s| %-15s | %-20s | %-20s | %-20s | %-20s | %-15s | %-15s%n",
+                "ID", "Nom","type_composant", "nom_projet", " Quantite", "Coefficient Qualite","Cout Transport","Cout Unitaire");
+        System.out.print("--------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+        materiauxHashMap.values().stream()
+                .filter(p -> Optional.ofNullable(p.getProjet())
+                        .map(Projet::getNomProjet)
+                        .orElse("").equals(nomProject))
+                .forEach(Materiaux::affiche);
+        double totalSum = materiauxHashMap.values().stream()
+                .filter(p -> Optional.ofNullable(p.getProjet())
+                        .map(Projet::getNomProjet)
+                        .orElse("").equals(nomProject))
+                .mapToDouble(Materiaux::calculerTotal)
+                .sum();
+        System.out.printf(CostumColor.RED_BOLD_BRIGHT + "--- Total Cost Materiaux : %.2f%n" + CostumColor.RESET, totalSum);
     }
 
 
