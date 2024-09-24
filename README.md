@@ -85,4 +85,15 @@ git `clone https://github.com/anwar-bouchehboun/S1_Brief-3.git`
 `Bati-Cuisine2\out\artifacts\Bati_Cuisine2_jar`
 `java -jar Bati-Cuisine2.jar`
 
+### Planification du Projet
+
+- Pour suivre l'avancement et les tâches liées à ce projet, veuillez consulter notre planification JIRA :
+ `https://anouarab95.atlassian.net/jira/software/projects/BATI/boards/6/backlog?epics=visible`
+
+
 ### Conception UML(Diagramme ) :
+
+### Contact
+Pour toute question ou suggestion, veuillez contacter :
+- **Nom :** Anwar Bouchehboun
+- **Email :** anuoar.ab95@gmail.com
