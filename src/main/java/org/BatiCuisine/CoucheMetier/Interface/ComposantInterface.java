@@ -8,5 +8,5 @@ import java.util.List;
 public interface ComposantInterface <T>{
    void  create(T T);
     HashMap<String, T> getAllMain();
-    List<T> getAllMain(Projet projet);
+    List<T> getAllMainData(Projet projet);
 }

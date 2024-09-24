@@ -55,6 +55,13 @@ public class Mainœuvre extends  Composant {
 
     }
 
-
+    @Override
+    public String toString() {
+        return "Mainœuvre{" +
+                "tauxHoraire=" + tauxHoraire +
+                ", heuresTravail=" + heuresTravail +
+                ", productiviteOuvrier=" + productiviteOuvrier +
+                '}';
+    }
 }
 

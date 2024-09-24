@@ -64,7 +64,7 @@ public class MainoeuvreRepository implements ComposantInterface<Mainœuvre> {
                 Projet projet = new Projet();
                 projet.setNomProjet(rs.getString("nom_projet"));
                     p.setProjet(projet);
-                mainœuvreHashMap.put(p.getProjet().getNomProjet(),p);
+                mainœuvreHashMap.put(p.getNom(),p);
             }
 
         } catch (SQLException e) {
@@ -74,7 +74,7 @@ public class MainoeuvreRepository implements ComposantInterface<Mainœuvre> {
         return mainœuvreHashMap;
     }
 
-    public List<Mainœuvre> getAllMain(Projet projet) {
+    public List<Mainœuvre> getAllMainData(Projet projet) {
         String sql = "SELECT m.id, m.nom, m.type_composant, m.tauxhoraire, m.heurestravail, m.productiviteouvrier,m.taux_tva " +
                 "FROM mainoeuvre m, projet p " +
                 "WHERE m.projet_id = p.id AND p.nom_projet = ?";

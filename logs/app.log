@@ -271,3 +271,16 @@
   Position : 42
 2024-09-23 21:14:52 ERROR o.B.coucheUtilitaire.LoggerMessage - Error: L'indice de la colonne est hors limite : 1, nombre de colonnes : 0.
 2024-09-23 22:44:43 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-24 09:32:54 INFO  o.B.coucheUtilitaire.LoggerMessage - Devis accepted successfully!
+2024-09-24 10:06:03 INFO  o.B.coucheUtilitaire.LoggerMessage - Aucun projet ajouté pour le client.
+2024-09-24 10:06:03 ERROR o.B.coucheUtilitaire.LoggerMessage - Aucun Client
+2024-09-24 10:06:28 INFO  o.B.coucheUtilitaire.LoggerMessage - Client registration successful.
+2024-09-24 10:06:46 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-24 10:08:57 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-24 10:08:57 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-24 10:08:57 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-24 10:08:57 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-24 10:08:57 INFO  o.B.coucheUtilitaire.LoggerMessage - Taux tva mis à jour avec succès.
+2024-09-24 10:08:57 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
+2024-09-24 10:09:05 ERROR o.B.coucheUtilitaire.LoggerMessage - Erreur lors de la création du devis : Un résultat a été retourné alors qu'aucun n'était attendu.
+2024-09-24 10:10:14 INFO  o.B.coucheUtilitaire.LoggerMessage - Devis accepted successfully!

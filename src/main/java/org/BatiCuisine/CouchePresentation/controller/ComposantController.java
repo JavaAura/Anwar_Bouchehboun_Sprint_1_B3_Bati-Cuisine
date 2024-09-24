@@ -12,31 +12,30 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
 public class ComposantController {
 
-    HashMap<String, Mainœuvre> map=new HashMap<>();
+         public ComposantController(){
+
+         }
+
+    HashMap<String, Mainœuvre> map= new HashMap<>();
     HashMap<String, Materiaux> materiauxHashMap= new HashMap<>();
-   List<Mainœuvre> mainœuvres = new ArrayList<>();
-   List<Materiaux> materiauxes= new ArrayList<>();
+    List<Mainœuvre> mainœuvres = new ArrayList<>();
+    List<Materiaux> materiauxes= new ArrayList<>();
     public  final ComposantServices mainoeuvreServices=new ComposantServices();
     public static ComposantServices composantServices =new ComposantServices();
-    public  ComposantController(){
 
-    }
-
-
+    // search mainOeuvre
     public void getAllMainoeuvre(String nomProject){
-        map=composantServices.getAllMainoeuvre();
 
-        System.out.printf("%-10s| %-20s | %-20s | %-20s | %-20s | %-20s | %-15s%n",
-                    "ID", "Nom","type_composant", "heuresTravail ", "productivite ", "nom_projet"," tauxhoraire ");
-            System.out.print("------------------------------------------------------------------------------------------------------------------------------------------\n");
+        map=composantServices.getAllMainoeuvre();
         if (!map.isEmpty()) {
             boolean projectExists = map.values().stream()
                     .anyMatch(p -> p.getProjet().getNomProjet().equals(nomProject));
             if (projectExists) {
-                // If the project name exists, perform the filter and display the materials
+                System.out.printf("%-10s| %-20s | %-20s | %-20s | %-20s | %-20s | %-15s%n",
+                        "ID", "Nom", "type_composant", "heuresTravail ", "productivite ", "nom_projet", " tauxhoraire ");
+                System.out.print("------------------------------------------------------------------------------------------------------------------------------------------\n");
                 map.values().stream()
                         .filter(p -> p.getProjet().getNomProjet().equals(nomProject))
                         .forEach(Mainœuvre::affiche);
@@ -45,48 +44,39 @@ public class ComposantController {
                         .mapToDouble(Mainœuvre::calculerTotal)
                         .sum();
                 System.out.printf(CostumColor.RED_BOLD_BRIGHT + "--- Total Cost Main d'œuvre : %.2f%n" + CostumColor.RESET, totalSum);
-
-            } else {
-                // If no materials for the project exist
-                System.out.println("No Main d'œuvre found for project: " + nomProject);
+            }else{
+                System.out.println("nom de Projet et vide");
             }
-
-
-        }else {
-            System.out.println("No Main d'œuvre available.");
         }
-
-    }
-
+}
+  // search Materiaux
     public void getAllMateriaux(String nomProject){
         materiauxHashMap=composantServices.getAllMateriaux();
-        System.out.printf("%-10s| %-15s | %-20s | %-20s | %-20s | %-20s | %-15s | %-15s%n",
-                "ID", "Nom","type_composant", "nom_projet", " Quantite", "Coefficient Qualite","Cout Transport","Cout Unitaire");
-        System.out.print("--------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-        boolean projectExists = materiauxHashMap.values().stream()
-                .anyMatch(p -> p.getProjet().getNomProjet().equals(nomProject));
+        if (!materiauxHashMap.isEmpty()) {
+            boolean projectExists = materiauxHashMap.values().stream()
+                    .anyMatch(p -> p.getProjet().getNomProjet().equals(nomProject));
+            if (projectExists) {
 
-        if (projectExists) {
-            materiauxHashMap.values().stream()
-                    .filter(p -> p.getProjet().getNomProjet().equals(nomProject))
-                    .forEach(Materiaux::affiche);
-            double totalSum = materiauxHashMap.values().stream()
-                    .filter(p -> p.getProjet().getNomProjet().equals(nomProject))
-                    .mapToDouble(Materiaux::calculerTotal)
-                    .sum();
-            System.out.printf(CostumColor.RED_BOLD_BRIGHT + "--- Total Cost Materiaux : %.2f%n" + CostumColor.RESET, totalSum);
+                System.out.printf("%-10s| %-15s | %-20s | %-20s | %-20s | %-20s | %-15s | %-15s%n",
+                        "ID", "Nom", "type_composant", "nom_projet", " Quantite", "Coefficient Qualite", "Cout Transport", "Cout Unitaire");
+                System.out.print("--------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+                materiauxHashMap.values().stream()
+                        .filter(p -> p.getProjet().getNomProjet().equals(nomProject))
+                        .forEach(Materiaux::affiche);
+                double totalSum = materiauxHashMap.values().stream()
+                        .filter(p -> p.getProjet().getNomProjet().equals(nomProject))
+                        .mapToDouble(Materiaux::calculerTotal)
+                        .sum();
+                System.out.printf(CostumColor.RED_BOLD_BRIGHT + "--- Total Cost Materiaux : %.2f%n" + CostumColor.RESET, totalSum);
+            }else {
+                System.out.println("nom de Projet et vide");
 
-        } else {
-            System.out.println("No materials found for project: " + nomProject);
+            }
         }
-
-
-
-
-
     }
 
 
+    //add mainOeuvre
     public  void mainOeuvre(Projet p){
         if (p==null){
             return;
@@ -117,9 +107,11 @@ public class ComposantController {
 
         } while (continueInput.equalsIgnoreCase("yes"));
 
-       // mainœuvres.forEach(mainœuvre -> mainoeuvreServices.createMainoeuvre(mainœuvre));
+        // mainœuvres.forEach(mainœuvre -> mainoeuvreServices.createMainoeuvre(mainœuvre));
 
     }
+
+    //add matrieaux
     public void matriEuax(Projet p){
         if (p==null){
             return;
@@ -153,13 +145,13 @@ public class ComposantController {
 
         } while (continueInput.equalsIgnoreCase("yes"));
 
-       // materiauxes.forEach(materiaux -> mainoeuvreServices.createMatrieaux(materiaux));
+        // materiauxes.forEach(materiaux -> mainoeuvreServices.createMatrieaux(materiaux));
     }
 
     public void createCpmposant(Projet p) {
         if( InputValidator.askYesNoQuestion("Voulez-vous ajouter un Composant (yes - non)?")){
-           mainOeuvre(p);
-           matriEuax(p);
+            mainOeuvre(p);
+            matriEuax(p);
         }else{
             LoggerMessage.warn("Ajout refusé.");
 
@@ -174,13 +166,11 @@ public class ComposantController {
 
     public  List<Mainœuvre> listeMainOeuvre(Projet projet){
 
-   return composantServices.getAllMainoeuvreProject(projet);
+        return composantServices.getAllMainoeuvreProject(projet);
 
     }
     public List<Materiaux> listeMateriaux(Projet projet){
         return  composantServices.getAllMateriauxProject(projet);
     }
-
-
 
 }

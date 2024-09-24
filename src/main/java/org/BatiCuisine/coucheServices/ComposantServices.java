@@ -35,10 +35,10 @@ public class ComposantServices {
         composantRepository.update(tva,id);
     }
     public List<Mainœuvre>  getAllMainoeuvreProject(Projet projet){
-   return   mainoeuvreRepository.getAllMain(projet);
+   return   mainoeuvreRepository.getAllMainData(projet);
     }
     public List<Materiaux> getAllMateriauxProject(Projet projet){
-        return  materiauxRepository.getAllMain(projet);
+        return  materiauxRepository.getAllMainData(projet);
     }
     public double getTva(Projet projet){
         return  composantRepository.getTva(projet);

@@ -17,4 +17,7 @@ public class DevisServices {
     public Devis createDevis (Devis devis){
         return devisRepository.create(devis);
     }
+    public  void accpeteDevis(Devis devis){
+        devisRepository.accepteDevis(devis);
+    }
 }

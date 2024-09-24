@@ -64,7 +64,7 @@ public class MateriauxRepository implements ComposantInterface<Materiaux> {
                 Projet projet = new Projet();
                 projet.setNomProjet(rs.getString("nom_projet"));
                 p.setProjet(projet);
-                materiauxHashMap.put(p.getProjet().getNomProjet(),p);
+                materiauxHashMap.put(p.getNom(),p);
             }
 
         } catch (SQLException e) {
@@ -75,7 +75,7 @@ public class MateriauxRepository implements ComposantInterface<Materiaux> {
     }
 
     @Override
-    public List<Materiaux> getAllMain(Projet projet) {
+    public List<Materiaux> getAllMainData(Projet projet) {
         String sql = "SELECT m.id, m.nom, m.type_composant, m.quantite, m.couttransport, m.coefficientqualite,m.coutunitaire,m.taux_tva " +
                 "FROM materiel m, projet p " +
                 "WHERE m.projet_id = p.id AND p.nom_projet = ?";

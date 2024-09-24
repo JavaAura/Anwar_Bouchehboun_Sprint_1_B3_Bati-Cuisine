@@ -11,10 +11,10 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
-public class DevisRepository implements RepoInterface<Devis> {
+public class DevisRepository  {
 
 
-    @Override
+
     public Devis create(Devis devis) {
 
         String sql = "INSERT INTO devis(montantestime, dateemission,datevalidite,accepte, projet_id) VALUES (?, ?,?,?, ?) RETURNING id";
@@ -44,9 +44,31 @@ public class DevisRepository implements RepoInterface<Devis> {
         return devis;
     }
 
+    public void accepteDevis(Devis devis) {
+        String sql = "UPDATE devis SET accepte = ? WHERE projet_id = ?";
 
-    @Override
-    public List<Devis> getAll() {
-        return List.of();
+        try (
+             PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql)) {
+
+            preparedStatement.setBoolean(1, true);
+
+            preparedStatement.setInt(2, devis.getProjet().getId());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                LoggerMessage.info("Devis accepted successfully!");
+            } else {
+               LoggerMessage.warn("No Devis found with the given projet_id.");
+            }
+
+        } catch (SQLException e) {
+            LoggerMessage.error("Error while accepting devis: " + e.getMessage());
+
+        }
     }
+
+
+
+
 }

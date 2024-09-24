@@ -6,6 +6,7 @@ import org.BatiCuisine.CouchePresentation.CostumColor;
 import org.BatiCuisine.coucheServices.ComposantServices;
 import org.BatiCuisine.coucheServices.DevisServices;
 import org.BatiCuisine.coucheUtilitaire.DateUtlis;
+import org.BatiCuisine.coucheUtilitaire.InputValidator;
 
 import java.time.LocalDate;
 
@@ -32,25 +33,30 @@ public class DevisController {
         double coutFinal= p.getCoutTotal();
          tva=composantServices.getTva(p);
          margeBeneficiaire=p.getMargeBeneficiaire();
+         //total avant
         double totalAvantTVA = p.calculerTotalMatriaux() + p.calculerTotalMainOeuvre();
         detailsProjet(p);
         System.out.println(CostumColor.RED_BOLD_BRIGHT+"--- Détail des Coûts ---"+ CostumColor.RESET);
         System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ matériaux ---------------- " + CostumColor.RESET);
+        //materiaux
         p.afficherDetailsMateriaux();
+
         System.out.printf("**Coût total des matériaux avant TVA : %.2f €**\n", p.calculerTotalMatriaux());
         System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ main-d'œuvre ---------------- " + CostumColor.RESET);
+       //Ouviers
         p.afficherDetailsOuvriers();
 
         System.out.printf("**Coût total de la main-d'œuvre avant TVA : %.2f €**\n", p.calculerTotalMainOeuvre());
 
 
         System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ Total Final :  ---------------- " + CostumColor.RESET);
+     //accepte Tva
       if(tva>0){
           System.out.printf("**Coût total des matériaux avec  (%.0f%%) TVA : %.2f €**\n",tva*100,p.calculerTotalMateriauxAvecTVA(tva));
           System.out.printf("**Coût total de la  main-d'œuvre avec  (%.0f%%) TVA : %.2f €**\n",tva*100,p.calculerTotalMainOeuvreAvecTVA(tva));
       }
         System.out.printf("**Coût total avant marge : %.2f €**\n", totalAvantTVA);
-
+//accpete margeBeneficiaire
         if (margeBeneficiaire > 0) {
             System.out.printf("**Coût total avec marge : %.2f €**\n", p.calculerTotalMateriauxAvecTVA(tva)+p.calculerTotalMainOeuvreAvecTVA(tva));
 
@@ -59,8 +65,16 @@ public class DevisController {
         System.out.printf("**Coût total final du projet : %.2f €**\n",coutFinal);
 
 
-     //   boolean appliquerSave = InputValidator.getYesNoInput("Souhaitez-vous enregistrer le devis  ? (yes/no) : ").equalsIgnoreCase("yes");
+       boolean accepte = InputValidator.getYesNoInput("Souhaitez-vous Accpete le devis  ? (yes/no) : ").equalsIgnoreCase("yes");
+        if (accepte){
+            Devis d= new Devis();
+            d.setProjet(p);
+            devisServices.accpeteDevis(d);
+            System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ Accpete Devis ---------------- " + CostumColor.RESET);
+        }else {
+            System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ Refuser Devis ---------------- " + CostumColor.RESET);
 
+        }
 
     }
 
