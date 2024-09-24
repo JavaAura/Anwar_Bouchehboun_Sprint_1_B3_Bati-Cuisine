@@ -2,9 +2,11 @@ package org.BatiCuisine.CouchePresentation.controller;
 
 import org.BatiCuisine.CoucheMetier.Entite.Devis;
 import org.BatiCuisine.CoucheMetier.Entite.Projet;
+import org.BatiCuisine.CoucheMetier.Enum.EtatProjet;
 import org.BatiCuisine.CouchePresentation.CostumColor;
 import org.BatiCuisine.coucheServices.ComposantServices;
 import org.BatiCuisine.coucheServices.DevisServices;
+import org.BatiCuisine.coucheServices.ProjetServices;
 import org.BatiCuisine.coucheUtilitaire.DateUtlis;
 import org.BatiCuisine.coucheUtilitaire.InputValidator;
 
@@ -16,6 +18,7 @@ public class DevisController {
      }
       public ComposantServices composantServices= new ComposantServices();
       public DevisServices devisServices=new DevisServices();
+      public ProjetServices projetServices=new ProjetServices();
 
      public  void  createDevis(Projet projet){
          LocalDate datevalidite= DateUtlis.getDateInput("Entrez la date de validité du devis (format : jj/mm/aaaa):");
@@ -76,15 +79,19 @@ public class DevisController {
         boolean accepte = InputValidator.getYesNoInput("Souhaitez-vous Accpete le devis  ? (yes/no) : ").equalsIgnoreCase("yes");
         if (accepte){
             d.setProjet(p);
+
+            p.setEtatProjet(EtatProjet.TERMINE);
             devisServices.accpeteDevis(d);
             System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ Accpete Devis ---------------- " + CostumColor.RESET);
         }else {
-
+            p.setEtatProjet(EtatProjet.ANNULE);
             System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ Refuser Devis ---------------- " + CostumColor.RESET);
 
         }}else {
            System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"Devis deja accpete " +CostumColor.RESET);
        }
+       projetServices.updateEtat(p);
+
     }
 
 

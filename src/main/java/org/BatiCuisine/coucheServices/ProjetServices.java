@@ -29,4 +29,7 @@ public class ProjetServices {
 
         return   projetRepository.create(projet);
     }
+    public void updateEtat(Projet projet){
+        projetRepository.updateEtat(projet);
+    }
 }

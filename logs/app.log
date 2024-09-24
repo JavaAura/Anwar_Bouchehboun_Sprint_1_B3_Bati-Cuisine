@@ -284,3 +284,22 @@
 2024-09-24 10:08:57 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
 2024-09-24 10:09:05 ERROR o.B.coucheUtilitaire.LoggerMessage - Erreur lors de la création du devis : Un résultat a été retourné alors qu'aucun n'était attendu.
 2024-09-24 10:10:14 INFO  o.B.coucheUtilitaire.LoggerMessage - Devis accepted successfully!
+2024-09-24 14:08:15 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-24 14:10:11 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-24 14:10:11 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-24 14:10:11 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-24 14:10:11 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-24 14:10:11 INFO  o.B.coucheUtilitaire.LoggerMessage - Taux tva mis à jour avec succès.
+2024-09-24 14:10:11 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
+2024-09-24 14:10:17 ERROR o.B.coucheUtilitaire.LoggerMessage - Erreur lors de la création du devis : Un résultat a été retourné alors qu'aucun n'était attendu.
+2024-09-24 14:11:08 INFO  o.B.coucheUtilitaire.LoggerMessage - Devis accepted successfully!
+2024-09-24 14:13:50 INFO  o.B.coucheUtilitaire.LoggerMessage - État du projet mis à jour avec succès.
+2024-09-24 14:14:22 INFO  o.B.coucheUtilitaire.LoggerMessage - Devis accepted successfully!
+2024-09-24 14:14:22 INFO  o.B.coucheUtilitaire.LoggerMessage - État du projet mis à jour avec succès.
+2024-09-24 14:14:57 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-24 14:15:36 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-24 14:15:36 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-24 14:15:36 INFO  o.B.coucheUtilitaire.LoggerMessage - Taux tva mis à jour avec succès.
+2024-09-24 14:15:36 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
+2024-09-24 14:15:44 ERROR o.B.coucheUtilitaire.LoggerMessage - Erreur lors de la création du devis : Un résultat a été retourné alors qu'aucun n'était attendu.
+2024-09-24 14:16:05 INFO  o.B.coucheUtilitaire.LoggerMessage - État du projet mis à jour avec succès.

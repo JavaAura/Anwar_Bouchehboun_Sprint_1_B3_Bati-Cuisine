@@ -88,6 +88,26 @@ public class ProjetRepository implements ProjetInterface<Projet> {
             LoggerMessage.error("Erreur: " + e.getMessage());
         }
     }
+    public void updateEtat(Projet projet) {
+        String sql = "UPDATE projet SET etat_projet = ? WHERE id = ?";
+
+        try (PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(sql)) {
+            statement.setString(1, projet.getEtatProjet().name());
+            statement.setInt(2, projet.getId());
+
+            int rowsUpdated = statement.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                LoggerMessage.info("État du projet mis à jour avec succès.");
+            } else {
+                LoggerMessage.info("Aucun projet trouvé avec cet ID.");
+            }
+
+        } catch (SQLException e) {
+            LoggerMessage.error("Erreur lors de la mise à jour de l'état du projet: " + e.getMessage());
+        }
+    }
+
 
     @Override
     public Projet findByName(String projet) {
