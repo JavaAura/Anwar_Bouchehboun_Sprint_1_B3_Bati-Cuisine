@@ -20,7 +20,6 @@ public class DevisController {
      public  void  createDevis(Projet projet){
          LocalDate datevalidite= DateUtlis.getDateInput("Entrez la date de validité du devis (format : jj/mm/aaaa):");
          Devis devis = new Devis();
-         devis.setAccepte(false);
          devis.setProjet(projet);
          devis.setDateValidite(datevalidite);
          System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"Devis enregistré avec succès !"+CostumColor.RESET);
@@ -64,18 +63,28 @@ public class DevisController {
         }
         System.out.printf("**Coût total final du projet : %.2f €**\n",coutFinal);
 
+        accepteDavis(p);
 
-       boolean accepte = InputValidator.getYesNoInput("Souhaitez-vous Accpete le devis  ? (yes/no) : ").equalsIgnoreCase("yes");
+
+    }
+//check accepte devis
+    public void accepteDavis(Projet p){
+
+      Devis d= devisServices.valideDevis(p);
+
+       if( !d.isAccepte()){
+        boolean accepte = InputValidator.getYesNoInput("Souhaitez-vous Accpete le devis  ? (yes/no) : ").equalsIgnoreCase("yes");
         if (accepte){
-            Devis d= new Devis();
             d.setProjet(p);
             devisServices.accpeteDevis(d);
             System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ Accpete Devis ---------------- " + CostumColor.RESET);
         }else {
+
             System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"------------ Refuser Devis ---------------- " + CostumColor.RESET);
 
-        }
-
+        }}else {
+           System.out.println(CostumColor.BLUE_BOLD_BRIGHT+"Devis deja accpete " +CostumColor.RESET);
+       }
     }
 
 

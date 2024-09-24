@@ -1,6 +1,7 @@
 package org.BatiCuisine.coucheServices;
 
 import org.BatiCuisine.CoucheMetier.Entite.Devis;
+import org.BatiCuisine.CoucheMetier.Entite.Projet;
 import org.BatiCuisine.couchePersistence.repository.DevisRepository;
 
 public class DevisServices {
@@ -19,5 +20,8 @@ public class DevisServices {
     }
     public  void accpeteDevis(Devis devis){
         devisRepository.accepteDevis(devis);
+    }
+    public  Devis valideDevis(Projet projet){
+        return  devisRepository.valideDevis(projet);
     }
 }

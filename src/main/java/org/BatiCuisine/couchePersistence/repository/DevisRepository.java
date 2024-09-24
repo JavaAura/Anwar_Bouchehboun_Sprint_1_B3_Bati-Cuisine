@@ -1,6 +1,7 @@
 package org.BatiCuisine.couchePersistence.repository;
 
 import org.BatiCuisine.CoucheMetier.Entite.Devis;
+import org.BatiCuisine.CoucheMetier.Entite.Projet;
 import org.BatiCuisine.CoucheMetier.Interface.RepoInterface;
 import org.BatiCuisine.coucheUtilitaire.DbConnection;
 import org.BatiCuisine.coucheUtilitaire.LoggerMessage;
@@ -69,6 +70,30 @@ public class DevisRepository  {
     }
 
 
+    public Devis valideDevis(Projet projet) {
+        String sql = "SELECT accepte FROM devis WHERE projet_id = ?";
+
+        Devis devis = null;
+
+        try (
+             PreparedStatement pstmt =  DbConnection.getInstance().getConnection().prepareStatement(sql)) {
+
+            pstmt.setInt(1, projet.getId());
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    devis = new Devis();
+                    devis.setAccepte(rs.getBoolean("accepte"));
+
+                }
+            }
+
+        } catch (SQLException e) {
+            LoggerMessage.error("Error while checking Devis acceptance: " + e.getMessage());
+        }
+
+        return devis;
+    }
 
 
 }
