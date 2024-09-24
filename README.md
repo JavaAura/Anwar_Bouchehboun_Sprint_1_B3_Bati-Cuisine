@@ -72,10 +72,13 @@ git `clone https://github.com/anwar-bouchehboun/S1_Brief-3.git`
 
 ## Configurer la base de données :
 
-    - Install PostgreSQL.
-    - Create a database named `BatiCuisine`.
+- Install PostgreSQL.
+- Create a database named `BatiCuisine`.
 
-`CREATE DATABASE BatiCuisine;` - Import the SQL structure file located at `./sql/sql.sql`. - Configure database connection settings in `src/main/java/org/Bebilo/utilitaire/DbConnection.java`.
+`CREATE DATABASE BatiCuisine;` 
+
+- Import the SQL structure file located at `./sql/sql.sql`. 
+- Configure database connection settings in `src/main/java/org/Bebilo/utilitaire/DbConnection.java`.
 
 ### Pour exécuter l'application, exécutez la commande suivante :
 
