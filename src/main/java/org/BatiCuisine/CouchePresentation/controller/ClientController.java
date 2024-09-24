@@ -75,7 +75,7 @@ public class ClientController {
 
     }
 
-    //findClient
+    //findClient GET Optional stream
     public Client findClient(Client client){
         List<Client> clients = clientService.Client();
         Optional<Client> opClient = clients.stream()
