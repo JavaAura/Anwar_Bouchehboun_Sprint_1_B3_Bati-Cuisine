@@ -1,6 +1,7 @@
 package org.BatiCuisine.CouchePresentation.controller;
 
 import org.BatiCuisine.CoucheMetier.Entite.Client;
+import org.BatiCuisine.CoucheMetier.Entite.Devis;
 import org.BatiCuisine.CoucheMetier.Entite.Projet;
 
 import org.BatiCuisine.CoucheMetier.Enum.EtatProjet;
@@ -11,6 +12,9 @@ import org.BatiCuisine.coucheUtilitaire.InputValidator;
 import org.BatiCuisine.coucheUtilitaire.LoggerMessage;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 public class ProjetController {
@@ -27,6 +31,7 @@ public class ProjetController {
 
     public void getProjet() {
         projetHashMap = projetServices.Projet();
+
         if (projetHashMap.isEmpty()) {
             LoggerMessage.info("Projet Vide");
         } else {
@@ -36,7 +41,9 @@ public class ProjetController {
             projetHashMap.values()
                     .forEach(Projet::Affiche);
         }
+
     }
+
     public void getByNameProjet(String name) {
         projetHashMap = projetServices.Projet();
         if (projetHashMap.isEmpty()) {
@@ -46,8 +53,13 @@ public class ProjetController {
                     "ID", "Projet", "Surface", "Etat Projet", "Client");
             System.out.print("-----------------------------------------------------------------------------------------------------------------\n");
             projetHashMap.values().stream().filter(t->t.getNomProjet().equals(name))
+
                     .forEach(Projet::Affiche);
+
+
         }
+
+
     }
 
   public Projet findByName(String projet){

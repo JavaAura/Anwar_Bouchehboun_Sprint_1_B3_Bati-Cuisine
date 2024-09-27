@@ -2,7 +2,6 @@ package org.BatiCuisine.couchePersistence.repository;
 
 import org.BatiCuisine.CoucheMetier.Entite.Devis;
 import org.BatiCuisine.CoucheMetier.Entite.Projet;
-import org.BatiCuisine.CoucheMetier.Interface.RepoInterface;
 import org.BatiCuisine.coucheUtilitaire.DbConnection;
 import org.BatiCuisine.coucheUtilitaire.LoggerMessage;
 
@@ -10,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.List;
 
 public class DevisRepository  {
 

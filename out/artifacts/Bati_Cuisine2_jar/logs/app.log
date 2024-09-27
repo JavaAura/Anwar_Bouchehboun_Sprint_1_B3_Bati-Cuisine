@@ -1,1 +1,12 @@
 2024-09-24 10:14:50 INFO  o.B.coucheUtilitaire.LoggerMessage - Aucun projet ajouté pour le client.
+2024-09-25 21:06:15 INFO  o.B.coucheUtilitaire.LoggerMessage - État du projet mis à jour avec succès.
+2024-09-25 21:07:17 INFO  o.B.coucheUtilitaire.LoggerMessage - Aucun projet ajouté pour le client.
+2024-09-25 21:07:17 ERROR o.B.coucheUtilitaire.LoggerMessage - Aucun Client
+2024-09-25 23:31:14 INFO  o.B.coucheUtilitaire.LoggerMessage - Client registration successful.
+2024-09-25 23:31:27 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet registration successful.
+2024-09-25 23:33:20 INFO  o.B.coucheUtilitaire.LoggerMessage - Mainœuvre  success.
+2024-09-25 23:33:20 INFO  o.B.coucheUtilitaire.LoggerMessage - materiaux  success.
+2024-09-25 23:33:20 INFO  o.B.coucheUtilitaire.LoggerMessage - Taux tva mis à jour avec succès.
+2024-09-25 23:33:20 INFO  o.B.coucheUtilitaire.LoggerMessage - Projet mis à jour avec succès.
+2024-09-25 23:33:31 ERROR o.B.coucheUtilitaire.LoggerMessage - Erreur lors de la création du devis : Un résultat a été retourné alors qu'aucun n'était attendu.
+2024-09-25 23:34:10 INFO  o.B.coucheUtilitaire.LoggerMessage - État du projet mis à jour avec succès.
